@@ -4,7 +4,6 @@ Created on Nov 16, 2014
 @author: Arthur
 '''
 import unittest
-import TreeNode
 import Solution
 
 class Test(unittest.TestCase):
