@@ -43,31 +43,93 @@ class Test(unittest.TestCase):
         self.assertEqual(rulst, False)
         self.assertEqual(self.testedobj.rootnode, None)
 
-    def testBinTreeDeserializationOnOJforNullTree(self):
+    def testBinTreeDeserializationOnOJforNullTreeWithSharp(self):
         # arrange
         srlztn = "{#}"
 
         # act
-        self.testedobj.DeserializationOnOJ(srlztn)
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
 
         # assert
-        self.assertEqual(self.testedobj.rootnode, None)
+        self.assertEqual(rulst, True)
+        self.assertNotEqual(self.testedobj.rootnode, None)
+        self.assertEqual(self.testedobj.rootnode.val, None)
+        self.assertEqual(self.testedobj.rootnode.left, None)
+        self.assertEqual(self.testedobj.rootnode.right, None)
+
+    def testBinTreeDeserializationOnOJforNullTreeWithNoPara(self):
+        # arrange
+        srlztn = "{}"
+
+        # act
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
+
+        # assert
+        self.assertEqual(rulst, True)
+        self.assertNotEqual(self.testedobj.rootnode, None)
+        self.assertEqual(self.testedobj.rootnode.val, None)
+        self.assertEqual(self.testedobj.rootnode.left, None)
+        self.assertEqual(self.testedobj.rootnode.right, None)
 
     def testBinTreeDeserializationOnOJforFullcase(self):
         # arrange
         srlztn = "{1,2,3,#,#,4,#,#,5}"
 
         # act
-        self.testedobj.DeserializationOnOJ(srlztn)
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
 
         # assert
+        self.assertEqual(rulst, True)
+
         self.assertNotEqual(self.testedobj.rootnode, None)
-        self.assertEqual(self.testedobj.rootnode.val, 1)
-        self.assertEqual(self.testedobj.rootnode.left, None)
-        self.assertEqual(self.testedobj.rootnode.right, None)
+        self.assertEqual(self.testedobj.rootnode.val, '1')
+
+        self.assertNotEqual(self.testedobj.rootnode.left, None)
+        self.assertEqual(self.testedobj.rootnode.left.val, '2')
+
+        self.assertNotEqual(self.testedobj.rootnode.right, None)
+        self.assertEqual(self.testedobj.rootnode.right.val, '3')
+
+        self.assertEqual(self.testedobj.rootnode.left.left.val, None)
+        self.assertEqual(self.testedobj.rootnode.left.left.left, None)
+        self.assertEqual(self.testedobj.rootnode.left.left.right, None)
+
+        self.assertEqual(self.testedobj.rootnode.left.right.val, None)
+        self.assertEqual(self.testedobj.rootnode.left.right.left, None)
+        self.assertEqual(self.testedobj.rootnode.left.right.right, None)
+
+        self.assertNotEqual(self.testedobj.rootnode.right.left, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.val, '4')
+
+        self.assertEqual(self.testedobj.rootnode.right.right.val, None)
+        self.assertEqual(self.testedobj.rootnode.right.right.left, None)
+        self.assertEqual(self.testedobj.rootnode.right.right.right, None)
+
+        self.assertEqual(self.testedobj.rootnode.right.left.left.val, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.left.left, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.left.right, None)
+
+        self.assertNotEqual(self.testedobj.rootnode.right.left.right, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.val, '5')
+
+        self.assertEqual(self.testedobj.rootnode.right.left.right.left.val, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.left.left, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.left.right, None)
+
+        self.assertEqual(self.testedobj.rootnode.right.left.right.right.val, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.right.left, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.right.right, None)
 
 
+    def testBinTreeSerializationOnOJforFullcase(self):
+        # arrange
+        srlztn = "{1,2,3,#,#,4,#,#,5}"
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
+        self.assertEqual(rulst, True)
 
+        # act
+
+        # assert
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
