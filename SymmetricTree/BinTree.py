@@ -4,6 +4,7 @@ Created on Nov 16, 2014
 @author: Arthur
 '''
 import queue
+import re
 
 class TreeNode:
     def __init__(self, x = None):
@@ -23,10 +24,6 @@ class BinTree:
         datalist = srlztnOnOJ[1:-1].split(',')
 
         self.rootnode = TreeNode()
-
-        if datalist[0] == '':
-            return True
-
         tempq = queue.Queue()
         tempq.put(self.rootnode)
 
@@ -43,5 +40,23 @@ class BinTree:
 
         return True
 
-    def SerializationOnOJ(self, rootnode):
-        pass
+    def SerializationOnOJ(self):
+        srlztnOnOJ = "{"
+
+        tempq = queue.Queue()
+        tempq.put(self.rootnode)
+
+        while not tempq.empty():
+            treenode = tempq.get()
+            if treenode.val != None:
+                srlztnOnOJ += treenode.val
+                tempq.put(treenode.left)
+                tempq.put(treenode.right)
+            else:
+                srlztnOnOJ += '#'
+            if tempq.empty():
+                break
+            srlztnOnOJ += ','
+
+        result = re.sub(r"(,#)+\Z", r"", srlztnOnOJ)
+        return result + '}'
