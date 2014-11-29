@@ -4,16 +4,17 @@ Created on Nov 16, 2014
 @author: Arthur
 '''
 import unittest
-from BinTree import *
+import BinTree
 
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.testedobj = BinTree()
+        self.testedobj = BinTree.BinTree()
         pass
 
 
     def tearDown(self):
+        self.testedobj.rootnode = None
         pass
 
 

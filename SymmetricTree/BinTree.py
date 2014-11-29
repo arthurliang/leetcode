@@ -7,7 +7,7 @@ import queue
 import re
 
 class TreeNode:
-    def __init__(self, x = None):
+    def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
@@ -23,7 +23,7 @@ class BinTree:
 
         datalist = srlztnOnOJ[1:-1].split(',')
 
-        self.rootnode = TreeNode()
+        self.rootnode = TreeNode(None)
         tempq = queue.Queue()
         tempq.put(self.rootnode)
 
@@ -33,8 +33,8 @@ class BinTree:
             treenode = tempq.get()
             if datalist[index] != '#':
                 treenode.val = datalist[index]
-                treenode.left = TreeNode()
-                treenode.right = TreeNode()
+                treenode.left = TreeNode(None)
+                treenode.right = TreeNode(None)
                 tempq.put(treenode.left)
                 tempq.put(treenode.right)
 
@@ -54,9 +54,7 @@ class BinTree:
                 tempq.put(treenode.right)
             else:
                 srlztnOnOJ += '#'
-            if tempq.empty():
-                break
             srlztnOnOJ += ','
 
-        result = re.sub(r"(,#)+\Z", r"", srlztnOnOJ)
+        result = re.sub(r"(,#)*,?\Z", r"", srlztnOnOJ)
         return result + '}'
