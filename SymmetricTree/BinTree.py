@@ -12,6 +12,12 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
+'''
+Definition of the Null TreeNode:
+  1. TreeNode is an instance
+  2. val is None
+'''
 class BinTree:
     def __init__(self):
         self.rootnode = None
@@ -19,6 +25,9 @@ class BinTree:
     def DeserializationOnOJ(self, srlztnOnOJ):
         paraValid = (srlztnOnOJ.startswith("{") and srlztnOnOJ.endswith("}"))
         if not paraValid:
+            return False
+
+        if re.search(r"#}\Z", srlztnOnOJ):
             return False
 
         datalist = srlztnOnOJ[1:-1].split(',')
@@ -48,6 +57,8 @@ class BinTree:
 
         while not tempq.empty():
             treenode = tempq.get()
+            if treenode == None:
+                break;
             if treenode.val != None:
                 srlztnOnOJ += treenode.val
                 tempq.put(treenode.left)
