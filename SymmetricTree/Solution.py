@@ -9,4 +9,19 @@ class Solution:
     # @param root, a tree node
     # @return a boolean
     def isSymmetric(self, root):
-        pass
+        if root == None:
+            return False
+        return self.isMirror(root.left, root.right)
+
+    def isMirror(self, leftTreeNode, rightTreeNode):
+        if leftTreeNode == None and rightTreeNode == None:
+            return True
+
+        if leftTreeNode.val != rightTreeNode.val:
+            return False
+
+        if not self.isMirror(leftTreeNode.left, rightTreeNode.right):
+            return False
+        if not self.isMirror(leftTreeNode.right, rightTreeNode.left):
+            return False
+        return True
