@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
         actRslt = self.testedobj.isSymmetric(None)
 
         # assert
-        self.assertEqual(False, actRslt)
+        self.assertEqual(True, actRslt)
 
 
     def testIsSymmetricWithTrueWhenBinTreeJustHasARootNode(self):

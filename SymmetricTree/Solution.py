@@ -10,12 +10,15 @@ class Solution:
     # @return a boolean
     def isSymmetric(self, root):
         if root == None:
-            return False
+            return True
         return self.isMirror(root.left, root.right)
 
     def isMirror(self, leftTreeNode, rightTreeNode):
         if leftTreeNode == None and rightTreeNode == None:
             return True
+
+        if leftTreeNode == None or rightTreeNode == None:
+            return False
 
         if leftTreeNode.val != rightTreeNode.val:
             return False
