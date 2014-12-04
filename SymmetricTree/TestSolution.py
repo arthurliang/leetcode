@@ -68,6 +68,19 @@ class Test(unittest.TestCase):
         self.assertEqual(False, actRslt)
 
 
+    def testIsSymmetricWithFalseWhenLeftIsNullButRightIsNotNull(self):
+        # arrange
+        testdataFalse = "{1,#,2}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataFalse)
+
+        # act
+        actRslt = self.testedobj.isSymmetric(bt.rootnode)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
     def testIsSymmetricWithFalseWhenLeftTreeIsDeeperThanRightTree(self):
         # arrange
         testdataFalse = "{1,2,2,#,#,4,#,#,5}"

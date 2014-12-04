@@ -20,7 +20,6 @@ class Test(unittest.TestCase):
 
     def testBinTreeIsNullAfterConstruct(self):
         self.assertEqual(self.testedobj.rootnode, None)
-        pass
 
 
     def testBinTreeDeserializationOnOJforParameterVerifyWithWrongPrefix(self):
@@ -47,9 +46,21 @@ class Test(unittest.TestCase):
         self.testBinTreeIsNullAfterConstruct()
 
 
-    def testBinTreeDeserializationOnOJforNullTreeWithSharp(self):
+    def testBinTreeDeserializationOnOJforParameterVerifyWithOnlySharpAtTheEnd(self):
         # arrange
         srlztn = "{#}"
+
+        # act
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
+
+        # assert
+        self.assertEqual(rulst, False)
+        self.testBinTreeIsNullAfterConstruct()
+
+
+    def testBinTreeDeserializationOnOJforParameterVerifyWithSharpAtTheEnd(self):
+        # arrange
+        srlztn = "{1,#}"
 
         # act
         rulst = self.testedobj.DeserializationOnOJ(srlztn)
@@ -68,18 +79,29 @@ class Test(unittest.TestCase):
 
         # assert
         self.assertEqual(rulst, True)
-        self.assertNotEqual(self.testedobj.rootnode, None)
-        self.assertEqual(self.testedobj.rootnode.val, "")
-        self.assertNotEqual(self.testedobj.rootnode.left, None)
-        self.assertNotEqual(self.testedobj.rootnode.right, None)
+        self.assertEqual(self.testedobj.rootnode, None)
 
-        self.assertEqual(self.testedobj.rootnode.left.val, None)
+
+    def testBinTreeDeserializationOnOJforSimpleCase(self):
+        # arrange
+        srlztn = "{1,2}"
+
+        # act
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
+
+        # assert
+        self.assertEqual(rulst, True)
+
+        self.assertNotEqual(self.testedobj.rootnode, None)
+        self.assertEqual(self.testedobj.rootnode.val, '1')
+
+        self.assertNotEqual(self.testedobj.rootnode.left, None)
+        self.assertEqual(self.testedobj.rootnode.left.val, '2')
         self.assertEqual(self.testedobj.rootnode.left.left, None)
         self.assertEqual(self.testedobj.rootnode.left.right, None)
 
-        self.assertEqual(self.testedobj.rootnode.right.val, None)
-        self.assertEqual(self.testedobj.rootnode.right.left, None)
-        self.assertEqual(self.testedobj.rootnode.right.right, None)
+        self.assertEqual(self.testedobj.rootnode.right, None)
+
 
 
     def testBinTreeDeserializationOnOJforFullcase(self):
@@ -97,44 +119,39 @@ class Test(unittest.TestCase):
 
         self.assertNotEqual(self.testedobj.rootnode.left, None)
         self.assertEqual(self.testedobj.rootnode.left.val, '2')
+        self.assertEqual(self.testedobj.rootnode.left.left, None)
+        self.assertEqual(self.testedobj.rootnode.left.right, None)
 
         self.assertNotEqual(self.testedobj.rootnode.right, None)
         self.assertEqual(self.testedobj.rootnode.right.val, '3')
-
-        self.assertEqual(self.testedobj.rootnode.left.left.val, None)
-        self.assertEqual(self.testedobj.rootnode.left.left.left, None)
-        self.assertEqual(self.testedobj.rootnode.left.left.right, None)
-
-        self.assertEqual(self.testedobj.rootnode.left.right.val, None)
-        self.assertEqual(self.testedobj.rootnode.left.right.left, None)
-        self.assertEqual(self.testedobj.rootnode.left.right.right, None)
+        self.assertEqual(self.testedobj.rootnode.right.right, None)
 
         self.assertNotEqual(self.testedobj.rootnode.right.left, None)
         self.assertEqual(self.testedobj.rootnode.right.left.val, '4')
-
-        self.assertEqual(self.testedobj.rootnode.right.right.val, None)
-        self.assertEqual(self.testedobj.rootnode.right.right.left, None)
-        self.assertEqual(self.testedobj.rootnode.right.right.right, None)
-
-        self.assertEqual(self.testedobj.rootnode.right.left.left.val, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.left.left, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.left.right, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.left, None)
 
         self.assertNotEqual(self.testedobj.rootnode.right.left.right, None)
         self.assertEqual(self.testedobj.rootnode.right.left.right.val, '5')
-
-        self.assertEqual(self.testedobj.rootnode.right.left.right.left.val, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.right.left.left, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.right.left.right, None)
-
-        self.assertEqual(self.testedobj.rootnode.right.left.right.right.val, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.right.right.left, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.right.right.right, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.left, None)
+        self.assertEqual(self.testedobj.rootnode.right.left.right.right, None)
 
 
     def testBinTreeSerializationOnOJforNullTree(self):
         # arrange
         expSrlztn = "{}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testBinTreeSerializationOnOJforSimpleCase(self):
+        # arrange
+        expSrlztn = "{1,2}"
+        rulst = self.testedobj.DeserializationOnOJ(expSrlztn)
+        self.assertEqual(rulst, True)
 
         # act
         actSrlztn = self.testedobj.SerializationOnOJ()

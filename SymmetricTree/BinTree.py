@@ -13,16 +13,14 @@ class TreeNode:
         self.right = None
 
 
-'''
-Definition of the Null TreeNode:
-  1. TreeNode is an instance
-  2. val is None
-'''
 class BinTree:
     def __init__(self):
         self.rootnode = None
 
     def DeserializationOnOJ(self, srlztnOnOJ):
+        if srlztnOnOJ == "{}":
+            return True
+
         paraValid = (srlztnOnOJ.startswith("{") and srlztnOnOJ.endswith("}"))
         if not paraValid:
             return False
@@ -47,19 +45,31 @@ class BinTree:
                 tempq.put(treenode.left)
                 tempq.put(treenode.right)
 
+        # TODO: is it possible to improve the whole function's performance
+        self.deleteNonValidRootNode(self.rootnode)
         return True
 
-    def SerializationOnOJ(self):
-        srlztnOnOJ = "{"
+    def deleteNonValidRootNode(self, rootnode):
+        if rootnode == None:
+            return
+        if rootnode.left != None and rootnode.left.val == None:
+            rootnode.left = None
+        if rootnode.right != None and rootnode.right.val == None:
+            rootnode.right = None
+        self.deleteNonValidRootNode(rootnode.left)
+        self.deleteNonValidRootNode(rootnode.right)
 
+    def SerializationOnOJ(self):
+        if self.rootnode == None:
+            return "{}"
+
+        srlztnOnOJ = "{"
         tempq = queue.Queue()
         tempq.put(self.rootnode)
 
         while not tempq.empty():
             treenode = tempq.get()
-            if treenode == None:
-                break;
-            if treenode.val != None:
+            if treenode != None:
                 srlztnOnOJ += treenode.val
                 tempq.put(treenode.left)
                 tempq.put(treenode.right)
@@ -67,5 +77,6 @@ class BinTree:
                 srlztnOnOJ += '#'
             srlztnOnOJ += ','
 
+        # TODO: is it possible to improve the whole function's performance
         result = re.sub(r"(,#)*,?\Z", r"", srlztnOnOJ)
         return result + '}'
