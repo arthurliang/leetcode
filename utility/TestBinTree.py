@@ -93,10 +93,10 @@ class Test(unittest.TestCase):
         self.assertEqual(rulst, True)
 
         self.assertNotEqual(self.testedobj.rootnode, None)
-        self.assertEqual(self.testedobj.rootnode.val, '1')
+        self.assertEqual(self.testedobj.rootnode.val, 1)
 
         self.assertNotEqual(self.testedobj.rootnode.left, None)
-        self.assertEqual(self.testedobj.rootnode.left.val, '2')
+        self.assertEqual(self.testedobj.rootnode.left.val, 2)
         self.assertEqual(self.testedobj.rootnode.left.left, None)
         self.assertEqual(self.testedobj.rootnode.left.right, None)
 
@@ -115,23 +115,23 @@ class Test(unittest.TestCase):
         self.assertEqual(rulst, True)
 
         self.assertNotEqual(self.testedobj.rootnode, None)
-        self.assertEqual(self.testedobj.rootnode.val, '1')
+        self.assertEqual(self.testedobj.rootnode.val, 1)
 
         self.assertNotEqual(self.testedobj.rootnode.left, None)
-        self.assertEqual(self.testedobj.rootnode.left.val, '2')
+        self.assertEqual(self.testedobj.rootnode.left.val, 2)
         self.assertEqual(self.testedobj.rootnode.left.left, None)
         self.assertEqual(self.testedobj.rootnode.left.right, None)
 
         self.assertNotEqual(self.testedobj.rootnode.right, None)
-        self.assertEqual(self.testedobj.rootnode.right.val, '3')
+        self.assertEqual(self.testedobj.rootnode.right.val, 3)
         self.assertEqual(self.testedobj.rootnode.right.right, None)
 
         self.assertNotEqual(self.testedobj.rootnode.right.left, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.val, '4')
+        self.assertEqual(self.testedobj.rootnode.right.left.val, 4)
         self.assertEqual(self.testedobj.rootnode.right.left.left, None)
 
         self.assertNotEqual(self.testedobj.rootnode.right.left.right, None)
-        self.assertEqual(self.testedobj.rootnode.right.left.right.val, '5')
+        self.assertEqual(self.testedobj.rootnode.right.left.right.val, 5)
         self.assertEqual(self.testedobj.rootnode.right.left.right.left, None)
         self.assertEqual(self.testedobj.rootnode.right.left.right.right, None)
 

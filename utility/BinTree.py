@@ -39,7 +39,7 @@ class BinTree:
                 break
             treenode = tempq.get()
             if datalist[index] != '#':
-                treenode.val = datalist[index]
+                treenode.val = int(datalist[index])
                 treenode.left = TreeNode(None)
                 treenode.right = TreeNode(None)
                 tempq.put(treenode.left)
@@ -70,7 +70,7 @@ class BinTree:
         while not tempq.empty():
             treenode = tempq.get()
             if treenode != None:
-                srlztnOnOJ += treenode.val
+                srlztnOnOJ += str(treenode.val)
                 tempq.put(treenode.left)
                 tempq.put(treenode.right)
             else:
