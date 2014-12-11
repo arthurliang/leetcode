@@ -15,29 +15,26 @@ class Solution:
             return []
 
         rst = []
-        tempQueue = Queue()
-        tempQueue.put(root)
+        curLevelRst = []
 
-        tempLevelList, tempQueue = self.getLevelList(tempQueue)
-        while tempLevelList != None:
-            rst.append(tempLevelList)
-            tempLevelList, tempQueue = self.getLevelList(tempQueue)
+        curLevelQueue = Queue()
+        nextLevelQueue = Queue()
+
+        curLevelQueue.put(root)
+        while not curLevelQueue.empty():
+            treenode = curLevelQueue.get()
+            curLevelRst.append(treenode.val)
+            if treenode.left is not None:
+                nextLevelQueue.put(treenode.left)
+            if treenode.right is not None:
+                nextLevelQueue.put(treenode.right)
+
+            if curLevelQueue.empty():
+                temp = curLevelQueue
+                curLevelQueue = nextLevelQueue
+                nextLevelQueue = temp
+
+                rst.append(curLevelRst)
+                curLevelRst = []
 
         return rst
-
-    def getLevelList(self, curlevelqueue):
-        if curlevelqueue.empty():
-            return None, None
-
-        levelvalrst = []
-        nextlevelqueue = Queue()
-        while not curlevelqueue.empty():
-            temptn = curlevelqueue.get()
-            if temptn.left is not None:
-                nextlevelqueue.put(temptn.left)
-            if temptn.right is not None:
-                nextlevelqueue.put(temptn.right)
-            levelvalrst.append(temptn.val)
-
-        return levelvalrst, nextlevelqueue
-
