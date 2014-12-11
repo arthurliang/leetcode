@@ -5,6 +5,8 @@
 #         self.left = None
 #         self.right = None
 
+from queue import Queue
+
 class Solution:
     # @param root, a tree node
     # @return a list of lists of integers
@@ -13,8 +15,8 @@ class Solution:
             return []
 
         rst = []
-        tempQueue = []
-        tempQueue.append(root)
+        tempQueue = Queue()
+        tempQueue.put(root)
 
         tempLevelList, tempQueue = self.getLevelList(tempQueue)
         while tempLevelList != None:
@@ -24,17 +26,17 @@ class Solution:
         return rst
 
     def getLevelList(self, curlevelqueue):
-        if not curlevelqueue:
+        if curlevelqueue.empty():
             return None, None
 
         levelvalrst = []
-        nextlevelqueue = []
-        while curlevelqueue:
-            temptn = curlevelqueue.pop(0)
+        nextlevelqueue = Queue()
+        while not curlevelqueue.empty():
+            temptn = curlevelqueue.get()
             if temptn.left is not None:
-                nextlevelqueue.append(temptn.left)
+                nextlevelqueue.put(temptn.left)
             if temptn.right is not None:
-                nextlevelqueue.append(temptn.right)
+                nextlevelqueue.put(temptn.right)
             levelvalrst.append(temptn.val)
 
         return levelvalrst, nextlevelqueue
