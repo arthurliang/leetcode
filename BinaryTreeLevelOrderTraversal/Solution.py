@@ -9,6 +9,9 @@ class Solution:
     # @param root, a tree node
     # @return a list of lists of integers
     def levelOrder(self, root):
+        if root is None:
+            return []
+
         rst = []
         tempQueue = []
         tempQueue.append(root)
@@ -28,8 +31,6 @@ class Solution:
         nextlevelqueue = []
         while curlevelqueue:
             temptn = curlevelqueue.pop(0)
-            if temptn is None:
-                return None, None
             if temptn.left is not None:
                 nextlevelqueue.append(temptn.left)
             if temptn.right is not None:
