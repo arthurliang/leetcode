@@ -28,11 +28,11 @@ class Solution:
         nextlevelqueue = []
         while curlevelqueue:
             temptn = curlevelqueue.pop(0)
-            if temptn == None:
+            if temptn is None:
                 return None, None
-            if temptn.left != None:
+            if temptn.left is not None:
                 nextlevelqueue.append(temptn.left)
-            if temptn.right != None:
+            if temptn.right is not None:
                 nextlevelqueue.append(temptn.right)
             levelvalrst.append(temptn.val)
 
