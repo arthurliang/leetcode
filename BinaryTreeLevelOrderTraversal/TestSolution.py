@@ -75,6 +75,21 @@ class Test(unittest.TestCase):
         self.assertEqual(expRst, actRslt)
 
 
+    def testlevelOrderForTwoLevelWithNullRight(self):
+        # arrange
+        testdataTrue = "{1,2}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        expRst = [[1],[2]]
+
+        # act
+        actRslt = self.testedobj.levelOrder(bt.rootnode)
+
+        # assert
+        self.assertEqual(expRst, actRslt)
+
+
     def testlevelOrderForFullCase(self):
         # arrange
         testdataTrue = "{3,9,20,#,#,15,7}"
