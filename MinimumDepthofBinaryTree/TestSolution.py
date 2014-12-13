@@ -29,6 +29,83 @@ class Test(unittest.TestCase):
         self.assertEqual(0, actRslt)
 
 
+    def testminDepthWithOneLevelTree(self):
+        # arrange
+        testdataTrue = "{1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        # act
+        actRslt = self.testedobj.minDepth(bt.rootnode)
+
+        # assert
+        self.assertEqual(1, actRslt)
+
+
+    def testminDepthWithTwoLevelButLeftIsNullTree(self):
+        # arrange
+        testdataTrue = "{1,#,3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        # act
+        actRslt = self.testedobj.minDepth(bt.rootnode)
+
+        # assert
+        self.assertEqual(2, actRslt)
+
+
+    def testminDepthWithTwoLevelButRightIsNullTree(self):
+        # arrange
+        testdataTrue = "{1,2}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        # act
+        actRslt = self.testedobj.minDepth(bt.rootnode)
+
+        # assert
+        self.assertEqual(2, actRslt)
+
+
+    def testminDepthWithTwoLevelTree(self):
+        # arrange
+        testdataTrue = "{1,2,3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        # act
+        actRslt = self.testedobj.minDepth(bt.rootnode)
+
+        # assert
+        self.assertEqual(2, actRslt)
+
+
+    def testminDepthWithThreeLevel(self):
+        # arrange
+        testdataTrue = "{3,9,20,15,7,2,30}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        # act
+        actRslt = self.testedobj.minDepth(bt.rootnode)
+
+        # assert
+        self.assertEqual(3, actRslt)
+
+
+    def testminDepthWithThreeLevelNotFull(self):
+        # arrange
+        testdataTrue = "{3,9,20,#,#,15,7}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        # act
+        actRslt = self.testedobj.minDepth(bt.rootnode)
+
+        # assert
+        self.assertEqual(2, actRslt)
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
