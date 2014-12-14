@@ -15,4 +15,4 @@ class Solution:
         leftDepth = self.maxDepth(root.left)
         rightDepth = self.maxDepth(root.right)
 
-        return max(leftDepth + 1, rightDepth + 1)
+        return max(leftDepth, rightDepth) + 1
