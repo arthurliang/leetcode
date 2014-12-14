@@ -10,4 +10,7 @@ class Solution:
     # @param sum, an integer
     # @return a boolean
     def hasPathSum(self, root, sum):
+        if root is None:
+            return False
+
         return True

@@ -21,12 +21,39 @@ class Test(unittest.TestCase):
 
     def testHasPathSumWhenRootIsNoneAndSumIs0(self):
         # arrange
+        WrongSum = 0
 
         # act
-        actRslt = self.testedobj.hasPathSum(None, 0)
+        actRslt = self.testedobj.hasPathSum(None, WrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNoneAndSumIs1(self):
+        # arrange
+        wrongSum = 1
+
+        # act
+        actRslt = self.testedobj.hasPathSum(None, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisRight(self):
+        # arrange
+        testdataTrue = "{1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        rightSum = 1
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, rightSum)
 
         # assert
         self.assertEqual(True, actRslt)
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
