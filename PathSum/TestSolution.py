@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
         self.assertEqual(False, actRslt)
 
 
-    def testHasPathSumWhenRootIsNotNoneAndSumisRight(self):
+    def testHasPathSumWhenRootIsNotNoneAndSumisRightTC1(self):
         # arrange
         testdataTrue = "{1}"
         bt = BinTree.BinTree()
@@ -53,6 +53,132 @@ class Test(unittest.TestCase):
 
         # assert
         self.assertEqual(True, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC1(self):
+        # arrange
+        testdataTrue = "{1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = 2
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisRightTC2(self):
+        # arrange
+        testdataTrue = "{2,1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        rightSum = 3
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, rightSum)
+
+        # assert
+        self.assertEqual(True, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC2_1(self):
+        # arrange
+        testdataTrue = "{2,1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = 2
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC2_2(self):
+        # arrange
+        testdataTrue = "{2,1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = 1
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC2_3(self):
+        # arrange
+        testdataTrue = "{2,1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = 4
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisRightTC3(self):
+        # arrange
+        testdataTrue = "{-2,#,-3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        rightSum = -5
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, rightSum)
+
+        # assert
+        self.assertEqual(True, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC3_1(self):
+        # arrange
+        testdataTrue = "{-2,#,-3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = -1
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC3_2(self):
+        # arrange
+        testdataTrue = "{-2,#,-3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = -2
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
+
+
+    def testHasPathSumWhenRootIsNotNoneAndSumisWrongTC3_3(self):
+        # arrange
+        testdataTrue = "{-2,#,-3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        wrongSum = -3
+
+        # act
+        actRslt = self.testedobj.hasPathSum(bt.rootnode, wrongSum)
+
+        # assert
+        self.assertEqual(False, actRslt)
 
 
 if __name__ == "__main__":

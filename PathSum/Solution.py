@@ -13,4 +13,8 @@ class Solution:
         if root is None:
             return False
 
-        return True
+        sum = sum - root.val
+        if sum is 0 and root.left is None and root.right is None:
+            return True
+
+        return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
