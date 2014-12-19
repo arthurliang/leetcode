@@ -110,6 +110,58 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testConvertWhenStringHasMlettersandNRowisNWhileMgreatthenN_TC1(self):
+        # arrange
+        s = "abc"
+        nRows = 2
+        expRslt = "acb"
+
+        # act
+        actRslt = self.testedobj.convert(s, nRows)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertWhenStringHasMlettersandNRowisNWhileMgreatthenN_TC2(self):
+        # arrange
+        s = "abcd"
+        nRows = 3
+        expRslt = "abdc"
+
+        # act
+        actRslt = self.testedobj.convert(s, nRows)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertWhenStringHasMlettersandNRowisNWhileMgreatthenN_TC3(self):
+        # arrange
+        s = "abcdef"
+        nRows = 3
+        expRslt = "aebdfc"
+
+        # act
+        actRslt = self.testedobj.convert(s, nRows)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertWhenStringHasMlettersandNRowisNWhileMgreatthenN_TC4(self):
+        # arrange
+        s = "abcdefg"
+        nRows = 3
+        expRslt = "aebdfcg"
+
+        # act
+        actRslt = self.testedobj.convert(s, nRows)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
