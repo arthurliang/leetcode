@@ -18,9 +18,36 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testConvertWhenStringIsNullandNis1(self):
+    def testConvertWhenStringIsNullandNRowis1_TC1(self):
         # arrange
         s = ""
+        nRows = 1
+        expRslt = s
+
+        # act
+        actRslt = self.testedobj.convert(s, nRows)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertWhenStringIsNotNullandNRowis1_TC2(self):
+        # arrange
+        s = "a"
+        nRows = 1
+        expRslt = s
+
+        # act
+        actRslt = self.testedobj.convert(s, nRows)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+
+    def testConvertWhenStringIsNotNullandNRowis1_TC3(self):
+        # arrange
+        s = "ab"
         nRows = 1
         expRslt = s
 
