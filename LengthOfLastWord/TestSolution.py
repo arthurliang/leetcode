@@ -18,10 +18,70 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testLengthOfLastWordWhenLastWordDosntExist(self):
+    def testLengthOfLastWordWhenLastWordDosntExist_TC1(self):
         # arrange
         s = ""
         expRslt = 0
+
+        # act
+        actRslt = self.testedobj.lengthOfLastWord(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testLengthOfLastWordWhenLastWordDosntExist_TC2(self):
+        # arrange
+        s = "    "
+        expRslt = 0
+
+        # act
+        actRslt = self.testedobj.lengthOfLastWord(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testLengthOfLastWord_TC1(self):
+        # arrange
+        s = "Hello World"
+        expRslt = 5
+
+        # act
+        actRslt = self.testedobj.lengthOfLastWord(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testLengthOfLastWord_TC2(self):
+        # arrange
+        s = " World"
+        expRslt = 5
+
+        # act
+        actRslt = self.testedobj.lengthOfLastWord(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testLengthOfLastWord_TC3(self):
+        # arrange
+        s = "hello "
+        expRslt = 5
+
+        # act
+        actRslt = self.testedobj.lengthOfLastWord(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testLengthOfLastWord_TC4(self):
+        # arrange
+        s = " test "
+        expRslt = 4
 
         # act
         actRslt = self.testedobj.lengthOfLastWord(s)
