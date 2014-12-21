@@ -18,10 +18,82 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testConvertToTitleWhenNumIsNotValid(self):
+    def testConvertToTitleWhenNumIs1(self):
         # arrange
-        num = 0
-        expRslt = None
+        num = 1
+        expRslt = "A"
+
+        # act
+        actRslt = self.testedobj.convertToTitle(num)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitleWhenNumIs2(self):
+        # arrange
+        num = 2
+        expRslt = "B"
+
+        # act
+        actRslt = self.testedobj.convertToTitle(num)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitleWhenNumIs26(self):
+        # arrange
+        num = 26
+        expRslt = "Z"
+
+        # act
+        actRslt = self.testedobj.convertToTitle(num)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitleWhenNumIs27(self):
+        # arrange
+        num = 27
+        expRslt = "AA"
+
+        # act
+        actRslt = self.testedobj.convertToTitle(num)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitleWhenNumIs28(self):
+        # arrange
+        num = 28
+        expRslt = "AB"
+
+        # act
+        actRslt = self.testedobj.convertToTitle(num)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitleWhenNumIs229(self):
+        # arrange
+        num = 256
+        expRslt = "IV"
+
+        # act
+        actRslt = self.testedobj.convertToTitle(num)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitleWhenNumIs208827064597(self):
+        # arrange
+        num = 208827064597
+        expRslt = "YYYYYYZU"
 
         # act
         actRslt = self.testedobj.convertToTitle(num)
