@@ -70,7 +70,7 @@ class Test(unittest.TestCase):
         self.testBinTreeIsNullAfterConstruct()
 
 
-    def testBinTreeDeserializationOnOJfor1TreeNodeWithEmptyStr(self):
+    def testBinTreeDeserializationOnOJfor0TreeNodeWithEmptyStr(self):
         # arrange
         srlztn = "{}"
 
