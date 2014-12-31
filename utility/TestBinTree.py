@@ -14,7 +14,7 @@ class Test(unittest.TestCase):
 
 
     def tearDown(self):
-        self.testedobj.rootnode = None
+        self.testedobj = None
         pass
 
 

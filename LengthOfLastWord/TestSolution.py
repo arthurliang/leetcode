@@ -15,6 +15,7 @@ class Test(unittest.TestCase):
 
 
     def tearDown(self):
+        self.testedobj = None
         pass
 
 
