@@ -24,6 +24,18 @@ class Test(unittest.TestCase):
         self.assertEqual(self.testedobj.listhead, None)
 
 
+    def testSinglyLinkedListDeserializationOnOJforEmptyStr(self):
+        # arrange
+        srlztn = "{}"
+
+        # act
+        rulst = self.testedobj.DeserializationOnOJ(srlztn)
+
+        # assert
+        self.assertEqual(rulst, True)
+        self.testSinglyLinkedListIsNullAfterConstruct()
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

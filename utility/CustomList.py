@@ -14,4 +14,7 @@ class SinglyLinkedList:
     def __init__(self):
         self.listhead = None
 
+    def DeserializationOnOJ(self, srlztnOnOJ):
+        if srlztnOnOJ == "{}":
+            return True
 
