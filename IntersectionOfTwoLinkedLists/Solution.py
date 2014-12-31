@@ -8,4 +8,23 @@ class Solution:
     # @param two ListNodes
     # @return the intersected ListNode
     def getIntersectionNode(self, headA, headB):
-        return None
+        pA = headA
+        pB = headB
+
+        while pA and pB:
+            pA = pA.next
+            pB = pB.next
+
+        while pA:
+            headA = headA.next
+            pA = pA.next
+
+        while pB:
+            headB = headB.next
+            pB = pB.next
+
+        while headA is not None and headA != headB:
+            headA = headA.next
+            headB = headB.next
+
+        return headA
