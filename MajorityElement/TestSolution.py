@@ -31,6 +31,30 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testMajorityElement_TC2(self):
+        #arrange
+        num = [2,1,2]
+        expRslt = 2
+
+        #act
+        actRslt = self.testedobj.majorityElement(num)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMajorityElement_TC3(self):
+        #arrange
+        num = [3,3,4]
+        expRslt = 3
+
+        #act
+        actRslt = self.testedobj.majorityElement(num)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
