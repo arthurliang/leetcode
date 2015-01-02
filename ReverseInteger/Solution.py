@@ -33,4 +33,7 @@ class Solution:
         else:
             rsltS = '-' + rsltS
 
-        return int(rsltS)
+        rslt = int(rsltS)
+        if rslt < -2**31 or rslt > 2**31 - 1:
+            return 0
+        return rslt
