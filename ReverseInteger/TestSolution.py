@@ -31,6 +31,30 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testReverseWhenXis123(self):
+        # arrange
+        x = 123
+        expRslt = 321
+
+        # act
+        actRslt = self.testedobj.reverse(x)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testReverseWhenXisNeg123(self):
+        # arrange
+        x = -123
+        expRslt = -321
+
+        # act
+        actRslt = self.testedobj.reverse(x)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

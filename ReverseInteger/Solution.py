@@ -20,4 +20,17 @@
 class Solution:
     # @return an integer
     def reverse(self, x):
-        return 0
+        rsltS = ""
+
+        s = str(x)
+        index = len(s) - 1
+        while index > 0:
+            rsltS += s[index]
+            index -= 1
+
+        if s[0] != '-':
+            rsltS += s[0]
+        else:
+            rsltS = '-' + rsltS
+
+        return int(rsltS)
