@@ -5,7 +5,7 @@
 #         self.left = None
 #         self.right = None
 
-from queue import Queue
+from Queue import Queue
 
 class Solution:
     # @param root, a tree node

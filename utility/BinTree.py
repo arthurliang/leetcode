@@ -3,7 +3,7 @@ Created on Nov 16, 2014
 
 @author: Arthur
 '''
-import queue
+from Queue import Queue
 import re
 
 class TreeNode:
@@ -31,7 +31,7 @@ class BinTree:
         datalist = srlztnOnOJ[1:-1].split(',')
 
         self.rootnode = TreeNode(None)
-        tempq = queue.Queue()
+        tempq = Queue()
         tempq.put(self.rootnode)
 
         for index in range(len(datalist)):
@@ -64,7 +64,7 @@ class BinTree:
             return "{}"
 
         srlztnOnOJ = "{"
-        tempq = queue.Queue()
+        tempq = Queue()
         tempq.put(self.rootnode)
 
         while not tempq.empty():
