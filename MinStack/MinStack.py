@@ -7,28 +7,41 @@
 
 class MinStack:
     def __init__(self):
-        self.backlist = []
+        self.backendlist = []
+        self.__min = None
 
     # @param x, an integer
     # @return an integer
     def push(self, x):
-        if not self.backlist:
-            self.minElement = x
+        if not self.backendlist:
+            self.__min = x
         else:
-            if self.minElement > x:
-                self.minElement = x
+            if self.__min > x:
+                t = self.__min - x
+                self.__min = x
+                x = x - t
 
-        self.backlist.insert(0, x)
+        self.backendlist.append(x)
 
     # @return nothing
     def pop(self):
-        self.backlist.pop(0)
+        if not self.backendlist:
+            return None
+
+        x = self.backendlist.pop()
+        if x < self.__min:
+            self.__min = self.__min + self.__min - x
 
     # @return an integer
     def top(self):
-        return self.backlist[0]
+        if not self.backendlist:
+            return None
+
+        x = self.backendlist.pop()
+        self.backendlist.append(x)
+        return max(self.__min, x)
 
     # @return an integer
     def getMin(self):
-        return self.minElement
+        return self.__min
 

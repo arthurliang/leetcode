@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testStackPushAndTop(self):
+    def testStackPushAndTop_TC1(self):
         #arrange
         data = 1
 
@@ -28,10 +28,20 @@ class Test(unittest.TestCase):
 
         #assert
         self.assertEqual(data, self.testedobj.top())
-        self.assertEqual(1, len(self.testedobj.backlist))
+        self.assertEqual(1, len(self.testedobj.backendlist))
 
 
-    def testStackPop(self):
+    def testStackPushAndTop_TC2(self):
+        #arrange
+
+        #act
+
+        #assert
+        self.assertEqual(None, self.testedobj.top())
+        self.assertEqual(0, len(self.testedobj.backendlist))
+
+
+    def testStackPop_TC1(self):
         #arrange
         data = 1
         self.testedobj.push(data)
@@ -42,18 +52,57 @@ class Test(unittest.TestCase):
 
         #assert
         self.assertEqual(expRslt, actRslt)
-        self.assertEqual(0, len(self.testedobj.backlist))
+        self.assertEqual(0, len(self.testedobj.backendlist))
+
+
+    def testStackPop_TC2(self):
+        #arrange
+        expRslt = None
+
+        #act
+        actRslt = self.testedobj.pop()
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+        self.assertEqual(0, len(self.testedobj.backendlist))
 
 
     def testStackGetMin_TC1(self):
         #arrange
-        datalist = [1,2,3,4,1,2,0,7,8,65,0,4,5,6]
+        datalist = [4,1,3,4,1,2,0,7,8,65,0,4,-3,80]
         for data in datalist:
             self.testedobj.push(data)
-        expRslt = 0
+        expRslt = -3
 
         #act
         actRslt = self.testedobj.getMin()
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def FuncForEasyTest(self, inputStr):
+        output = []
+        actlist = inputStr.split(',')
+        for act in actlist:
+            if "push" in act:
+                data = int(act[5:-1])
+                self.testedobj.push(data)
+            elif "getMin" in act:
+                output.append(self.testedobj.getMin())
+            else:
+                getattr(self.testedobj, act)()
+        return output
+
+
+    def testStackGetMin_TC2(self):
+        #arrange
+        inputStr = "push(2),push(0),push(3),push(0),getMin,pop,getMin,pop,getMin,pop,getMin"
+
+        expRslt = [0,0,0,2]
+
+        #act
+        actRslt = self.FuncForEasyTest(inputStr)
 
         #assert
         self.assertEqual(expRslt, actRslt)
