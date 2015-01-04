@@ -15,7 +15,41 @@
 #
 # If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.
 
+plusminus = '-+'
+digits = '0123456789'
+whitespace = ' '
+INT_MAX = 2**31 - 1
+INT_MIN = -2**31
+
 class Solution:
     # @return an integer
     def atoi(self, str):
-        return 0
+        s = str.strip()
+        l_s = len(s)
+
+        if l_s == 0:
+            return 0
+
+        rslt = 0
+        start = 1 if s[0] in plusminus else 0
+        neg = True if s[0] == '-' else False
+
+        for i in range(start, l_s):
+            if s[i] not in digits:
+                break
+            n = digits.index(s[i])
+            rslt += n
+            rslt *= 10
+
+        rslt /= 10
+
+        if neg:
+            rslt = -rslt
+
+        if rslt > INT_MAX:
+            return INT_MAX
+
+        if rslt < INT_MIN:
+            return INT_MIN
+
+        return rslt
