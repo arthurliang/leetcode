@@ -14,4 +14,8 @@
 class Solution:
     # @return a boolean
     def isPalindrome(self, x):
+        tmpS = str(x)
+        for i in range(len(tmpS) / 2):
+            if tmpS[i] != tmpS[-(i+1)]:
+                return False
         return True
