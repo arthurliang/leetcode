@@ -14,6 +14,10 @@ class Solution:
         if n == 0:
             return
 
+        while n > 0:
+            A.remove(0)
+            n -= 1
+
         A.extend(B)
         A.sort()
 
