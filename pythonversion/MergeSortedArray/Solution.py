@@ -13,6 +13,7 @@ class Solution:
     def merge(self, A, m, B, n):
         if n == 0:
             return
-        if m == 0:
-            A.extend(B)
-            return
+
+        A.extend(B)
+        A.sort()
+
