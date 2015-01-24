@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testConvertToTitle_TC1(self):
+    def testTitleToNumber_TC1(self):
         # arrange
         s = 'A'
         expRslt = 1
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC2(self):
+    def testTitleToNumber_TC2(self):
         # arrange
         s = 'B'
         expRslt = 2
@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC3(self):
+    def testTitleToNumber_TC3(self):
         # arrange
         s = 'C'
         expRslt = 3
@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC4(self):
+    def testTitleToNumber_TC4(self):
         # arrange
         s = 'Z'
         expRslt = 26
@@ -67,7 +67,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC5(self):
+    def testTitleToNumber_TC5(self):
         # arrange
         s = 'AA'
         expRslt = 27
@@ -79,7 +79,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC6(self):
+    def testTitleToNumber_TC6(self):
         # arrange
         s = 'AB'
         expRslt = 28

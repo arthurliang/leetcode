@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testConvertToTitle_TC1(self):
+    def testGenerate_TC1(self):
         # arrange
         numRows = 1
         expRslt = [[1]]
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC2(self):
+    def testGenerate_TC2(self):
         # arrange
         numRows = 2
         expRslt = [[1], [1, 1]]
@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC3(self):
+    def testGenerate_TC3(self):
         # arrange
         numRows = 5
         expRslt = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC4(self):
+    def testGenerate_TC4(self):
         # arrange
         numRows = 0
         expRslt = []

@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testConvertToTitle_TC1(self):
+    def testIsPalindrome_TC1(self):
         # arrange
         s = ''
         expRslt = True
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC2(self):
+    def testIsPalindrome_TC2(self):
         # arrange
         s = "A man, a plan, a canal: Panama"
         expRslt = True
@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC3(self):
+    def testIsPalindrome_TC3(self):
         # arrange
         s = "race a car"
         expRslt = False

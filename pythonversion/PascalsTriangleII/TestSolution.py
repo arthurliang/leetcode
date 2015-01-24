@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testConvertToTitle_TC1(self):
+    def testGetRow_TC1(self):
         # arrange
         rowIndex = 0
         expRslt = [1]
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC2(self):
+    def testGetRow_TC2(self):
         # arrange
         rowIndex = 1
         expRslt = [1, 1]
@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC3(self):
+    def testGetRow_TC3(self):
         # arrange
         rowIndex = 3
         expRslt = [1, 3, 3, 1]
@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
-    def testConvertToTitle_TC4(self):
+    def testGetRow_TC4(self):
         # arrange
         rowIndex = 5
         expRslt = [1, 5, 10, 10, 5, 1]
