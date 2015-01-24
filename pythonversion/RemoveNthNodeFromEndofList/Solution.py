@@ -18,4 +18,19 @@
 class Solution:
     # @return a ListNode
     def removeNthFromEnd(self, head, n):
+        if head is None or n == 0:
+            return head
+        l = []
+        p = head
+        while p is not None:
+            l.append(p)
+            p = p.next
+        if len(l) == 1 and n == 1:
+            return None
+        if n == 1:
+            l[-(n+1)].next = None
+        elif n == len(l):
+            head = head.next
+        else:
+            l[-(n+1)].next = l[-(n-1)]
         return head
