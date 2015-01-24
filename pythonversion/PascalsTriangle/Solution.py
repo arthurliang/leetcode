@@ -14,4 +14,20 @@
 class Solution:
     # @return a list of lists of integers
     def generate(self, numRows):
-        return [[1]]
+        if numRows == 0:
+            return []
+        if numRows == 1:
+            return [[1]]
+        if numRows == 2:
+            return [[1], [1, 1]]
+
+        rslt = self.generate(numRows - 1)
+        rslt.append(self.generateRowByUpperRow(rslt[-1]))
+        return rslt
+
+    def generateRowByUpperRow(self, upperRow):
+        rslt = [1]
+        for i in range(0, len(upperRow) - 1):
+            rslt.append(upperRow[i] + upperRow[i + 1])
+        rslt.append(1)
+        return rslt
