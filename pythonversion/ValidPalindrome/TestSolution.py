@@ -31,6 +31,30 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testConvertToTitle_TC2(self):
+        # arrange
+        s = "A man, a plan, a canal: Panama"
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.isPalindrome(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testConvertToTitle_TC3(self):
+        # arrange
+        s = "race a car"
+        expRslt = False
+
+        # act
+        actRslt = self.testedobj.isPalindrome(s)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

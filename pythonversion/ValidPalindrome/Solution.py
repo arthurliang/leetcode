@@ -13,4 +13,16 @@ class Solution:
     # @param s, a string
     # @return a boolean
     def isPalindrome(self, s):
+        UppercaseNumber = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        s = s.upper()
+        wait4processStr = ""
+
+        for i in range(0, len(s)):
+            if s[i] in UppercaseNumber:
+                wait4processStr += s[i]
+
+        for j in range(0, len(wait4processStr)/2):
+            if wait4processStr[j] != wait4processStr[-(j+1)]:
+                return False
+
         return True
