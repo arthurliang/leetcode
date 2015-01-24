@@ -9,4 +9,14 @@
 class Solution:
     # @return a list of integers
     def getRow(self, rowIndex):
-        return [1]
+        l = [[1], [1, 1]]
+        if rowIndex == 0 or rowIndex == 1:
+            return l[rowIndex]
+
+        upperRow = self.getRow(rowIndex - 1)
+
+        rslt = [1]
+        for i in range(0, len(upperRow) - 1):
+            rslt.append(upperRow[i] + upperRow[i + 1])
+        rslt.append(1)
+        return rslt
