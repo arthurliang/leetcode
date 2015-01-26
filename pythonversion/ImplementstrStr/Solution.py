@@ -12,8 +12,24 @@ class Solution:
     # @param needle, a string
     # @return an integer
     def strStr(self, haystack, needle):
+        if len(needle) == 0:
+            return 0
+
         rslt = 0
         valid = False
+
+        for i in range(0, len(haystack) - len(needle) + 1):
+            if haystack[i] == needle[0]:
+                for j in range(0, len(needle)):
+                    if haystack[i + j] == needle[j]:
+                        continue
+                    else:
+                        j = len(needle)
+                        break
+                if j == len(needle) - 1:
+                    valid = True
+                    rslt = i
+                    break
 
         if valid:
             return rslt
