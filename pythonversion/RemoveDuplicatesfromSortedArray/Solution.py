@@ -15,17 +15,12 @@ class Solution:
     # @param a list of integers
     # @return an integer
     def removeDuplicates(self, A):
-        len_A = len(A)
-        cur_index = 0
-        offset = 0
-        j = 0
-        while cur_index + offset < len_A:
-            j = cur_index + offset + 1
-            while j < len_A and A[cur_index] == A[j]:
-                j += 1
-                offset = j - cur_index - 1
-            if j < len_A:
-                A[cur_index + 1] = A[j]
-            cur_index += 1
-
-        return cur_index
+        if len(A) == 0:
+            return 0
+        i = 0
+        for j in range(1, len(A)):
+            if A[i] == A[j]:
+                continue
+            i += 1
+            A[i] = A[j]
+        return i + 1
