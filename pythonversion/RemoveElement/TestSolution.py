@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
         # arrange
         A = [1]
         elem = None
-        expLen = 0
+        expLen = 1
         expA = [1]
 
         # act
@@ -69,14 +69,12 @@ class Test(unittest.TestCase):
         A = [1]
         elem = 1
         expLen = 0
-        expA = []
 
         # act
         actLen = self.testedobj.removeElement(A, elem)
 
         # assert
         self.assertEqual(expLen, actLen)
-        self.assertEqual(expA, A)
 
 
     def testRemoveElement_TC5(self):
@@ -84,7 +82,20 @@ class Test(unittest.TestCase):
         A = [1, 1]
         elem = 1
         expLen = 0
-        expA = []
+
+        # act
+        actLen = self.testedobj.removeElement(A, elem)
+
+        # assert
+        self.assertEqual(expLen, actLen)
+
+
+    def testRemoveElement_TC6(self):
+        # arrange
+        A = [3, 3]
+        elem = 5
+        expLen = 2
+        expA = [3, 3]
 
         # act
         actLen = self.testedobj.removeElement(A, elem)
@@ -92,6 +103,47 @@ class Test(unittest.TestCase):
         # assert
         self.assertEqual(expLen, actLen)
         self.assertEqual(expA, A)
+
+
+    def testRemoveElement_TC7(self):
+        # arrange
+        A = [2]
+        elem = 3
+        expLen = 1
+        expA = [2]
+
+        # act
+        actLen = self.testedobj.removeElement(A, elem)
+
+        # assert
+        self.assertEqual(expLen, actLen)
+        self.assertEqual(expA, A)
+
+
+    def testRemoveElement_TC8(self):
+        # arrange
+        A = [4, 5]
+        elem = 4
+        expLen = 1
+
+        # act
+        actLen = self.testedobj.removeElement(A, elem)
+
+        # assert
+        self.assertEqual(expLen, actLen)
+
+
+    def testRemoveElement_TC9(self):
+        # arrange
+        A = [4, 5]
+        elem = 5
+        expLen = 1
+
+        # act
+        actLen = self.testedobj.removeElement(A, elem)
+
+        # assert
+        self.assertEqual(expLen, actLen)
 
 
 if __name__ == "__main__":
