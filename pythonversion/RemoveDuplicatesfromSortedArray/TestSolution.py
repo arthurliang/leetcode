@@ -23,7 +23,7 @@ class Test(unittest.TestCase):
         # arrange
         A = [1, 1, 2]
         expLen = 2
-        expA = [1, 2]
+        expA = [1, 2, 2]
 
         # act
         actLen = self.testedobj.removeDuplicates(A)
@@ -31,6 +31,35 @@ class Test(unittest.TestCase):
         # assert
         self.assertEqual(expLen, actLen)
         self.assertEqual(expA, A)
+
+
+    def testRemoveDuplicates_TC2(self):
+        # arrange
+        A = []
+        expLen = 0
+        expA = []
+
+        # act
+        actLen = self.testedobj.removeDuplicates(A)
+
+        # assert
+        self.assertEqual(expLen, actLen)
+        self.assertEqual(expA, A)
+
+
+    def testRemoveDuplicates_TC3(self):
+        # arrange
+        A = [1, 1]
+        expLen = 1
+        expA = [1, 1]
+
+        # act
+        actLen = self.testedobj.removeDuplicates(A)
+
+        # assert
+        self.assertEqual(expLen, actLen)
+        self.assertEqual(expA, A)
+
 
 
 if __name__ == "__main__":

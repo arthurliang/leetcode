@@ -7,14 +7,25 @@
 # Given input array A = [1,1,2],
 #
 # Your function should return length = 2, and A is now [1,2].
+#
+# Note:
+# del, pop(), or remove() are not allowed.
 
 class Solution:
     # @param a list of integers
     # @return an integer
     def removeDuplicates(self, A):
-        i = 0
-        while i < len(A):
-            cnt = A.count(A[i])
-            del A[i:i + cnt - 1]
-            i += 1
-        return len(A)
+        len_A = len(A)
+        cur_index = 0
+        offset = 0
+        j = 0
+        while cur_index + offset < len_A:
+            j = cur_index + offset + 1
+            while j < len_A and A[cur_index] == A[j]:
+                j += 1
+                offset = j - cur_index - 1
+            if j < len_A:
+                A[cur_index + 1] = A[j]
+            cur_index += 1
+
+        return cur_index
