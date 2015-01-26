@@ -14,4 +14,11 @@ class Solution:
     # @param head, a ListNode
     # @return a ListNode
     def deleteDuplicates(self, head):
+        p = head
+        while p is not None and p.next is not None:
+            while p.val == p.next.val:
+                p.next = p.next.next
+                if p.next is None:
+                    break
+            p = p.next
         return head
