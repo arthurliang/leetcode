@@ -31,6 +31,54 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testClimbStairs_TC2(self):
+        #arrange
+        n = 2
+        expRslt = 2
+
+        #act
+        actRslt = self.testedobj.climbStairs(n)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testClimbStairs_TC3(self):
+        #arrange
+        n = 3
+        expRslt = 3
+
+        #act
+        actRslt = self.testedobj.climbStairs(n)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testClimbStairs_TC4(self):
+        #arrange
+        n = 4
+        expRslt = 5
+
+        #act
+        actRslt = self.testedobj.climbStairs(n)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testClimbStairs_TC5(self):
+        #arrange
+        n = 5
+        expRslt = 8
+
+        #act
+        actRslt = self.testedobj.climbStairs(n)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
