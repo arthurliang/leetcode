@@ -1,13 +1,14 @@
+# -*- coding: utf-8 -*-
 # Write a program to find the node at which the intersection of two singly linked lists begins.
 #
 #
 # For example, the following two linked lists:
 #
-# A:          a1 ¡ú a2
-#                    ¨K
-#                      c1 ¡ú c2 ¡ú c3
-#                    ¨J
-# B:     b1 ¡ú b2 ¡ú b3
+# A:          a1 â†’ a2
+#                    â†˜
+#                      c1 â†’ c2 â†’ c3
+#                    â†—
+# B:     b1 â†’ b2 â†’ b3
 # begin to intersect at node c1.
 #
 #
