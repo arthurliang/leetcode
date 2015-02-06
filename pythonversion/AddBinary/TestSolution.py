@@ -32,6 +32,32 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testAddBinary_TC2(self):
+        #arrange
+        a = '1'
+        b = '0'
+        expRslt = '1'
+
+        #act
+        actRslt = self.testedobj.addBinary(a, b)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testAddBinary_TC3(self):
+        #arrange
+        a = '11'
+        b = '11'
+        expRslt = '110'
+
+        #act
+        actRslt = self.testedobj.addBinary(a, b)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
