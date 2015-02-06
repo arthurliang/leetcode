@@ -11,9 +11,8 @@ class ListNode:
         self.next = None
 
 class SinglyLinkedList:
-    def __init__(self):
-        self.listhead = None
-
+    def __init__(self, head = None):
+        self.listhead = head
 
     def DeserializationOnOJ(self, srlztnOnOJ):
         if srlztnOnOJ == "{}":

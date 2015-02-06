@@ -14,6 +14,7 @@ class Test(unittest.TestCase):
         self.testedobj = Solution.Solution()
         self.sllA = CustomList.SinglyLinkedList()
         self.sllB = CustomList.SinglyLinkedList()
+        self.sllN = CustomList.SinglyLinkedList()
         pass
 
 
@@ -22,27 +23,193 @@ class Test(unittest.TestCase):
         pass
 
 
-    def testMergeTwoLists(self):
+    def testMergeTwoLists_TC1(self):
         #arrange
         headAoj = "{}"
         headBoj = "{}"
 
         self.sllA.DeserializationOnOJ(headAoj)
         self.sllB.DeserializationOnOJ(headBoj)
-        self.assertEqual(self.sllA.listhead, None)
-        self.assertEqual(self.sllB.listhead, None)
 
         l1 = self.sllA.listhead
         l2 = self.sllB.listhead
-        expRslt = None
+        expRslt = "{}"
 
         #act
-        actRslt = self.testedobj.mergeTwoLists(l1, l2)
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
 
         #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
         self.assertEqual(expRslt, actRslt)
-        self.assertEqual(self.sllA.listhead, None)
-        self.assertEqual(self.sllB.listhead, None)
+
+
+    def testMergeTwoLists_TC2(self):
+        #arrange
+        headAoj = "{}"
+        headBoj = "{0}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC3(self):
+        #arrange
+        headAoj = "{0}"
+        headBoj = "{}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC4(self):
+        #arrange
+        headAoj = "{0}"
+        headBoj = "{1}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0,1}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC5(self):
+        #arrange
+        headAoj = "{1}"
+        headBoj = "{0}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0,1}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC6(self):
+        #arrange
+        headAoj = "{0,2}"
+        headBoj = "{1}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0,1,2}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC7(self):
+        #arrange
+        headAoj = "{0,1}"
+        headBoj = "{2}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0,1,2}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC8(self):
+        #arrange
+        headAoj = "{0,1}"
+        headBoj = "{1}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0,1,1}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeTwoLists_TC9(self):
+        #arrange
+        headAoj = "{0,1,4}"
+        headBoj = "{1,2,3}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{0,1,1,2,3,4}"
+
+        #act
+        newHead = self.testedobj.mergeTwoLists(l1, l2)
+
+        #assert
+        self.sllN.listhead = newHead
+        actRslt = self.sllN.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
 
 
 if __name__ == "__main__":
