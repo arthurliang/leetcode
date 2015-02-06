@@ -31,6 +31,42 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testIsValidSudoku_TC2(self):
+        #arrange
+        board = [".87654621","2........","3........","4........","5........","6........","7........","8........","9........"]
+        expRslt = False
+
+        #act
+        actRslt = self.testedobj.isValidSudoku(board)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testIsValidSudoku_TC3(self):
+        #arrange
+        board = [".87654321","2........","3........","4........","5..6.....","6........","7........","8........","9........"]
+        expRslt = False
+
+        #act
+        actRslt = self.testedobj.isValidSudoku(board)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testIsValidSudoku_TC4(self):
+        #arrange
+        board = [".87654321","2........","3..5.....","4........","5........","6........","7........","8........","9........"]
+        expRslt = False
+
+        #act
+        actRslt = self.testedobj.isValidSudoku(board)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
