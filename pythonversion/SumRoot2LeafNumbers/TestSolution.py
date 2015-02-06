@@ -30,6 +30,20 @@ class Test(unittest.TestCase):
         self.assertEqual(0, actRslt)
 
 
+    def testSumNumbers_TC2(self):
+        # arrange
+        testdataTrue = "{1,2,3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        expRslt = 12 + 13
+
+        # act
+        actRslt = self.testedobj.sumNumbers(bt.rootnode)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
