@@ -32,10 +32,52 @@ class Test(unittest.TestCase):
 
     def testSumNumbers_TC2(self):
         # arrange
+        testdataTrue = "{1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        expRslt = 1
+
+        # act
+        actRslt = self.testedobj.sumNumbers(bt.rootnode)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSumNumbers_TC3(self):
+        # arrange
+        testdataTrue = "{1,2}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        expRslt = 1*10 + 2
+
+        # act
+        actRslt = self.testedobj.sumNumbers(bt.rootnode)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSumNumbers_TC4(self):
+        # arrange
+        testdataTrue = "{1,#,3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+        expRslt = 1*10 + 3
+
+        # act
+        actRslt = self.testedobj.sumNumbers(bt.rootnode)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSumNumbers_TC5(self):
+        # arrange
         testdataTrue = "{1,2,3}"
         bt = BinTree.BinTree()
         bt.DeserializationOnOJ(testdataTrue)
-        expRslt = 12 + 13
+        expRslt = (1*10 + 2) + (1*10 + 3)
 
         # act
         actRslt = self.testedobj.sumNumbers(bt.rootnode)

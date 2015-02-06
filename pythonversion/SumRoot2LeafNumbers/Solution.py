@@ -26,4 +26,18 @@ class Solution:
     # @param root, a tree node
     # @return an integer
     def sumNumbers(self, root):
-        return 0
+        if root is None:
+            return 0
+
+        sum, stack = 0, [(root, root.val)]
+
+        while stack:
+            node, val = stack.pop()
+            if node.left is None and node.right is None:
+                sum += val
+            if node.left:
+                stack.append((node.left, val * 10 + node.left.val))
+            if node.right:
+                stack.append((node.right, val * 10 + node.right.val))
+
+        return sum
