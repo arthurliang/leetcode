@@ -6,9 +6,12 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def climbStairs(self, n):
-        if n == 1:
-            return 1
-        elif n == 2:
-            return 2
-        else:
-            return self.climbStairs(n-1) + self.climbStairs(n-2);
+        # Fibonacci_number
+        # matrix form : multiplication solution for getting O(log(n)) time consuming
+        # {(Fn+1, Fn), (Fn, Fn-1)} = {(Fn+1, Fn), (Fn, Fn+1 - Fn)}
+        # ={(a,b), (b,a-b)} = ((1,1), (1,0))^n
+        a,b,x,y = 1,1,1,0
+        while n>0:
+            if n&1: x, y = a*x + b*y, b*x + y*(a-b)
+            a,b,n = a*a + b*b, 2*a*b - b*b, n>>1;
+        return x;
