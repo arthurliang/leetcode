@@ -22,15 +22,61 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def inorderTraversal(self, root):
-        # solution recursive, just for try
+        # Morris Inorder
         rslt = []
-        if root is None:
-            return rslt
+        cur = root
 
-        rslt.extend(self.inorderTraversal(root.left))
-
-        rslt.append(root.val)
-
-        rslt.extend(self.inorderTraversal(root.right))
+        while cur:
+            if cur.left is None:
+                rslt.append(cur.val)
+                cur = cur.right
+            else:
+                pre = cur.left
+                while pre.right and pre.right != cur:
+                    pre = pre.right
+                if pre.right is None:
+                    pre.right = cur
+                    cur = cur.left
+                else:
+                    rslt.append(cur.val)
+                    pre.right = None
+                    cur = cur.right
 
         return rslt
+
+#         # solution iteratively
+#         rslt = []
+#         if root is None:
+#             return rslt
+#
+#         stack = [root]
+#         visited = []
+#
+#         while stack:
+#             node = stack.pop()
+#
+#             if node in visited:
+#                 rslt.append(node.val)
+#                 continue
+#             visited.append(node)
+#
+#             if node.right is not None:
+#                 stack.append(node.right)
+#             stack.append(node)
+#             if node.left is not None:
+#                 stack.append(node.left)
+#
+#         return rslt
+
+#         # solution recursive, just for try
+#         rslt = []
+#         if root is None:
+#             return rslt
+#
+#         rslt.extend(self.inorderTraversal(root.left))
+#
+#         rslt.append(root.val)
+#
+#         rslt.extend(self.inorderTraversal(root.right))
+#
+#         return rslt
