@@ -22,4 +22,15 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def preorderTraversal(self, root):
-        return []
+        # solution recursive, just for try
+        rslt = []
+        if root is None:
+            return rslt
+
+        rslt.append(root.val)
+
+        rslt.extend(self.preorderTraversal(root.left))
+
+        rslt.extend(self.preorderTraversal(root.right))
+
+        return rslt
