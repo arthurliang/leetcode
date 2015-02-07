@@ -107,19 +107,19 @@ class Test(unittest.TestCase):
         self.assertEqual(expRst, actRslt)
 
 
-#     def testPreorderTraversal_TC7(self):
-#         # arrange
-#         testdataTrue = "{2,3,#,1}"
-#         bt = BinTree.BinTree()
-#         bt.DeserializationOnOJ(testdataTrue)
-#
-#         expRst = [2,3,1]
-#
-#         # act
-#         actRslt = self.testedobj.preorderTraversal(bt.rootnode)
-#
-#         # assert
-#         self.assertEqual(expRst, actRslt)
+    def testPreorderTraversal_TC7(self):
+        # arrange
+        testdataTrue = "{2,3,#,1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        expRst = [2,3,1]
+
+        # act
+        actRslt = self.testedobj.preorderTraversal(bt.rootnode)
+
+        # assert
+        self.assertEqual(expRst, actRslt)
 
 
 if __name__ == "__main__":
