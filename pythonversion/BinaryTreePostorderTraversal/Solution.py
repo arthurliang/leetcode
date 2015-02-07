@@ -22,15 +22,37 @@ class Solution:
     # @param root, a tree node
     # @return a list of integers
     def postorderTraversal(self, root):
-        # solution recursive, just for try
+        # solution iteratively
         rslt = []
         if root is None:
             return rslt
 
-        rslt.extend(self.postorderTraversal(root.left))
+        stack = [(root, False)]
 
-        rslt.extend(self.postorderTraversal(root.right))
+        while stack:
+            node, visited = stack.pop()
 
-        rslt.append(root.val)
+            if visited:
+                rslt.append(node.val)
+            else:
+                stack.append((node, True))
+                if node.right is not None:
+                    stack.append((node.right, False))
+                if node.left is not None:
+                    stack.append((node.left, False))
 
         return rslt
+
+
+#         # solution recursive, just for try
+#         rslt = []
+#         if root is None:
+#             return rslt
+#
+#         rslt.extend(self.postorderTraversal(root.left))
+#
+#         rslt.extend(self.postorderTraversal(root.right))
+#
+#         rslt.append(root.val)
+#
+#         return rslt
