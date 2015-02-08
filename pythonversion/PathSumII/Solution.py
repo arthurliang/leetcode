@@ -29,25 +29,58 @@ class Solution:
     # @param sum, an integer
     # @return a list of lists of integers
     def pathSum(self, root, sum):
-        # recursive solution
-        self.rslt = []
-        curPath = []
-
-        self.isPathSumValidAndUpdateResult(root, curPath, sum)
-
-        return self.rslt
-
-    def isPathSumValidAndUpdateResult(self, root, curPath, sum):
+        # iterative solution
         if root is None:
-            return
+            return []
 
-        curPath.append(root.val)
-        sum -= root.val
+        rslt = []
+        stack = [(root, False, False)]
 
-        if root.left is None and root.right is None and sum == 0:
-            self.rslt.append(curPath)
-            return
+        while stack:
+            node, leftVisited, rightVisited = stack.pop()
+            if not leftVisited and not rightVisited:
+                sum -= node.val
 
-        curPath2 = copy.copy(curPath)
-        self.isPathSumValidAndUpdateResult(root.left, curPath, sum)
-        self.isPathSumValidAndUpdateResult(root.right, curPath2, sum)
+            if node.left is None and node.right is None and sum == 0:
+                rslt.append([x[0].val for x in stack] + [node.val])
+                sum += node.val
+                continue
+
+            if not leftVisited and node.left is not None:
+                leftVisited = True
+                stack.append((node, leftVisited, rightVisited))
+                stack.append((node.left, False, False))
+                continue
+
+            if not rightVisited and node.right is not None:
+                rightVisited = True
+                stack.append((node, leftVisited, rightVisited))
+                stack.append((node.right, False, False))
+                continue
+
+            sum += node.val
+
+        return rslt
+
+#         # recursive solution
+#         self.rslt = []
+#         curPath = []
+#
+#         self.isPathSumValidAndUpdateResult(root, curPath, sum)
+#
+#         return self.rslt
+#
+#     def isPathSumValidAndUpdateResult(self, root, curPath, sum):
+#         if root is None:
+#             return
+#
+#         curPath.append(root.val)
+#         sum -= root.val
+#
+#         if root.left is None and root.right is None and sum == 0:
+#             self.rslt.append(curPath)
+#             return
+#
+#         curPath2 = copy.copy(curPath)
+#         self.isPathSumValidAndUpdateResult(root.left, curPath, sum)
+#         self.isPathSumValidAndUpdateResult(root.right, curPath2, sum)
