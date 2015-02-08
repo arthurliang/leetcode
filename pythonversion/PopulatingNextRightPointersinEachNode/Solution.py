@@ -35,10 +35,29 @@
 #         self.right = None
 #         self.next = None
 
-from Queue import Queue
-
 class Solution:
     # @param root, a tree node
     # @return nothing
     def connect(self, root):
+        # Brute-Force but not use constant extra space
+        if root is None:
             return
+
+        cq = [root]
+        nq = []
+
+        while cq:
+            node = cq.pop(0)
+            node.next = cq[0] if cq else None
+
+            if node.left is None:
+                continue
+
+            nq.append(node.left)
+            nq.append(node.right)
+
+            if not cq:
+                t = cq
+                cq = nq
+                nq = t
+                continue
