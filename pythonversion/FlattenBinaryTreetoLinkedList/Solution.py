@@ -37,4 +37,18 @@ class Solution:
     # @param root, a tree node
     # @return nothing, do it in place
     def flatten(self, root):
-        return
+        if root is None:
+            return
+
+        self.flatten(root.left)
+        self.flatten(root.right)
+
+        if root.left is None:
+            return
+
+        t = root.left
+        while t.right is not None:
+            t = t.right
+        t.right = root.right
+        root.right = root.left
+        root.left = None
