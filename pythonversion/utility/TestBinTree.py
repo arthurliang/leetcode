@@ -173,6 +173,73 @@ class Test(unittest.TestCase):
         self.assertEqual(expSrlztn, actSrlztn)
 
 
+
+    def testSerializationOnOJ4BTnextPropertyforNullTree(self):
+        # arrange
+        expSrlztn = "{}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+
+    def testSerializationOnOJ4BTnextPropertyfor1Level(self):
+        # arrange
+        bintree = "{1}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+
+    def testSerializationOnOJ4BTnextPropertyfor2Level(self):
+        # arrange
+        bintree = "{1,2,3}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+        self.testedobj.rootnode.left.next = self.testedobj.rootnode.right
+
+        expSrlztn = "{1,#,2,3,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+
+    def testSerializationOnOJ4BTnextPropertyfor3Level(self):
+        # arrange
+        bintree = "{1,2,3,4,5,6,7}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        self.testedobj.rootnode.left.next = self.testedobj.rootnode.right
+
+        self.testedobj.rootnode.left.left.next = self.testedobj.rootnode.left.right
+        self.testedobj.rootnode.left.right.next = self.testedobj.rootnode.right.left
+        self.testedobj.rootnode.right.left.next = self.testedobj.rootnode.right.right
+
+        expSrlztn = "{1,#,2,3,#,4,5,6,7,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

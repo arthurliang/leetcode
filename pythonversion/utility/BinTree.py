@@ -11,6 +11,7 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
+        self.next = None
 
 
 class BinTree:
@@ -79,4 +80,28 @@ class BinTree:
 
         # TODO: is it possible to improve the whole function's performance
         result = re.sub(r"(,#)*,?\Z", r"", srlztnOnOJ)
+        return result + '}'
+
+
+
+    def SerializationOnOJ4BTnextProperty(self):
+        if self.rootnode == None:
+            return "{}"
+
+        srlztnOnOJ = "{"
+        stack = [self.rootnode]
+
+        while stack:
+            treenode = stack.pop()
+
+            if treenode.left is not None:
+                stack.append(treenode.left)
+
+            while treenode is not None:
+                srlztnOnOJ += str(treenode.val) + ','
+                treenode = treenode.next
+            srlztnOnOJ += '#' + ','
+
+        # TODO: is it possible to improve the whole function's performance
+        result = re.sub(r",?\Z", r"", srlztnOnOJ)
         return result + '}'
