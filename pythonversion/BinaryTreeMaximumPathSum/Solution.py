@@ -21,4 +21,19 @@ class Solution:
     # @param root, a tree node
     # @return an integer
     def maxPathSum(self, root):
-        return 0
+        # recursive solution
+        if root is None:
+            return 0
+
+        self.globalMaxPathSum = root.val
+
+        self.getMaxSubPathSumAndUpdateGlobalMaxPathSum(root)
+        return self.globalMaxPathSum
+
+    def getMaxSubPathSumAndUpdateGlobalMaxPathSum(self, subroot):
+        if subroot is None:
+            return 0
+        lmax = max(0, self.getMaxSubPathSumAndUpdateGlobalMaxPathSum(subroot.left))
+        rmax = max(0, self.getMaxSubPathSumAndUpdateGlobalMaxPathSum(subroot.right))
+        self.globalMaxPathSum = max(self.globalMaxPathSum, lmax + rmax + subroot.val)
+        return max(lmax + subroot.val, rmax + subroot.val)
