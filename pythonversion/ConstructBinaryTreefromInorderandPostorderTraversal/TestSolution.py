@@ -28,10 +28,115 @@ class Test(unittest.TestCase):
         inorder = []
 
         # act
-        actRslt = self.testedobj.buildTree(postorder, inorder)
+        actRslt = self.testedobj.buildTree(inorder, postorder)
 
         # assert
         self.assertEqual(expRslt, actRslt)
+
+
+    def testBuildTree_TC2(self):
+        # arrange
+        expRslt = "{1}"
+        postorder = [1]
+        inorder = [1]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
+
+
+    def testBuildTree_TC3(self):
+        # arrange
+        expRslt = "{1,2}"
+        postorder = [2, 1]
+        inorder = [2, 1]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
+
+
+    def testBuildTree_TC5(self):
+        # arrange
+        expRslt = "{1,#,2}"
+        postorder = [2, 1]
+        inorder = [1, 2]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
+
+
+    def testBuildTree_TC6(self):
+        # arrange
+        expRslt = "{1,2,3}"
+        postorder = [2,3,1]
+        inorder = [2,1,3]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
+
+
+    def testBuildTree_TC7(self):
+        # arrange
+        expRslt = "{1,2,#,3}"
+        postorder = [3,2,1]
+        inorder = [3,2,1]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
+
+
+    def testBuildTree_TC8(self):
+        # arrange
+        expRslt = "{1,#,2,#,3}"
+        postorder = [3,2,1]
+        inorder = [1,2,3]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
+
+
+    def testBuildTree_TC9(self):
+        # arrange
+        expRslt = "{1,#,2,3}"
+        postorder = [3,2,1]
+        inorder = [1,3,2]
+
+        # act
+        actRslt = self.testedobj.buildTree(inorder, postorder)
+
+        # assert
+        bt = BinTree()
+        bt.rootnode = actRslt
+        self.assertEqual(expRslt, bt.SerializationOnOJ())
 
 
 if __name__ == "__main__":

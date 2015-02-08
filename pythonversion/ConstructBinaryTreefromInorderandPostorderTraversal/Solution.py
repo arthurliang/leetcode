@@ -18,6 +18,45 @@ class Solution:
     # @param postorder, a list of integers
     # @return a tree node
     def buildTree(self, inorder, postorder):
+        # iterative solution
         if not inorder:
             return None
 
+        head = TreeNode(postorder[-1])
+
+        curNode = head
+        flagLeft = False
+        stack = [head]
+        i = -2
+        j = -1
+        while i >= -len(postorder):
+            if stack and stack[-1].val == inorder[j]:
+                curNode = stack.pop()
+                j -= 1
+                flagLeft = True
+            elif flagLeft:
+                curNode.left = TreeNode(postorder[i])
+                curNode = curNode.left
+                stack.append(curNode)
+                i -= 1
+                flagLeft = False
+            else:
+                curNode.right = TreeNode(postorder[i])
+                curNode = curNode.right
+                stack.append(curNode)
+                i -= 1
+
+        return head
+
+
+#         # recursive solution
+#         if not inorder:
+#             return None
+#
+#         pos = inorder.index(postorder[-1])
+#
+#         head = TreeNode(postorder[-1])
+#         head.left = self.buildTree(inorder[0 : pos], postorder[0 : pos])
+#         head.right = self.buildTree(inorder[pos + 1 : len(inorder)], postorder[pos : len(postorder) - 1])
+#
+#         return head
