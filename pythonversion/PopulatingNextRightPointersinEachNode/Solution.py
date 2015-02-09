@@ -5,14 +5,16 @@
 #       TreeLinkNode *right;
 #       TreeLinkNode *next;
 #     }
-# Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+# Populate each next pointer to point to its next right node. If there is no next right node,
+# the next pointer should be set to NULL.
 #
 # Initially, all next pointers are set to NULL.
 #
 # Note:
 #
 # You may only use constant extra space.
-# You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).
+# You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and
+# every parent has two children).
 # For example,
 # Given the following perfect binary tree,
 #          1
@@ -39,25 +41,56 @@ class Solution:
     # @param root, a tree node
     # @return nothing
     def connect(self, root):
-        # Brute-Force but not use constant extra space
+        self.linklevel(root)
+        self.breakTailofLevel(root)
+
+    def linklevel(self, root):
+        def enqueue(tail, x):
+            if x:
+                tail.next = x
+                return x
+            else:
+                return tail
+
         if root is None:
             return
+        head = tail = root
+        head.next = head.left
+        while head.next:
+            tail = enqueue(tail, head.left)
+            tail = enqueue(tail, head.right)
+            head = head.next
 
-        cq = [root]
-        nq = []
+    def breakTailofLevel(self, root):
+        (i, m) = (0, 1)
+        prev = root
+        while root:
+            (prev, root) = (root, root.next)
+            i += 1
+            if i == m:
+                prev.next = None
+                (i, m) = (0, 2 * m)
 
-        while cq:
-            node = cq.pop(0)
-            node.next = cq[0] if cq else None
 
-            if node.left is None:
-                continue
-
-            nq.append(node.left)
-            nq.append(node.right)
-
-            if not cq:
-                t = cq
-                cq = nq
-                nq = t
-                continue
+#         # Brute-Force but not use constant extra space
+#         if root is None:
+#             return
+#
+#         cq = [root]
+#         nq = []
+#
+#         while cq:
+#             node = cq.pop(0)
+#             node.next = cq[0] if cq else None
+#
+#             if node.left is None:
+#                 continue
+#
+#             nq.append(node.left)
+#             nq.append(node.right)
+#
+#             if not cq:
+#                 t = cq
+#                 cq = nq
+#                 nq = t
+#                 continue
