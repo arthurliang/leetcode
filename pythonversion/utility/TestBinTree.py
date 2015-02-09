@@ -10,11 +10,15 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         self.testedobj = BinTree.BinTree()
+        self.testedobjbst = BinTree.BinSearchTree()
+        self.bst = BinTree.BinTree()
         pass
 
 
     def tearDown(self):
         self.testedobj = None
+        self.testedobjbst = None
+        self.bst = None
         pass
 
 
@@ -323,6 +327,270 @@ class Test(unittest.TestCase):
 
         # assert
         self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testSearchBST_TC1(self):
+        # arrange
+        val = 2
+        expRslt = None
+
+        # act
+        actRslt = self.testedobjbst.searchBST(None, val)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearchBST_TC2(self):
+        # arrange
+        bstree = "{2,1,3}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 2
+        expRslt = self.bst.rootnode
+
+        # act
+        actRslt = self.testedobjbst.searchBST(self.bst.rootnode, val)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearchBST_TC3(self):
+        # arrange
+        bstree = "{2,1,3}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 1
+        expRslt = self.bst.rootnode.left
+
+        # act
+        actRslt = self.testedobjbst.searchBST(self.bst.rootnode, val)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearchBST_TC4(self):
+        # arrange
+        bstree = "{2,1,3}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 3
+        expRslt = self.bst.rootnode.right
+
+        # act
+        actRslt = self.testedobjbst.searchBST(self.bst.rootnode, val)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearchBST_TC5(self):
+        # arrange
+        bstree = "{2,1,3}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 4
+        expRslt = None
+
+        # act
+        actRslt = self.testedobjbst.searchBST(self.bst.rootnode, val)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearchBST_TC6(self):
+        # arrange
+        bstree = "{7,2,13,#,5}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 5
+        expRslt = self.bst.rootnode.left.right
+
+        # act
+        actRslt = self.testedobjbst.searchBST(self.bst.rootnode, val)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertValToBST_TC1(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+        self.assertEqual(None, self.bst.rootnode)
+
+        val = 2
+        expRslt = "{2}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.insertValToBST(self.bst.rootnode, val)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertValToBST_TC2(self):
+        # arrange
+        bstree = "{2}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 1
+        expRslt = "{2,1}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.insertValToBST(self.bst.rootnode, val)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertValToBST_TC3(self):
+        # arrange
+        bstree = "{2}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 3
+        expRslt = "{2,#,3}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.insertValToBST(self.bst.rootnode, val)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertValToBST_TC4(self):
+        # arrange
+        bstree = "{2}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 2
+        expRslt = "{2}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.insertValToBST(self.bst.rootnode, val)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertValToBST_TC5(self):
+        # arrange
+        bstree = "{5,2,9,#,#,7,19}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        val = 13
+        expRslt = "{5,2,9,#,#,7,19,#,#,13}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.insertValToBST(self.bst.rootnode, val)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGenerateBST_TC1(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        vallist = [1,2,3]
+        expRslt = "{1,#,2,#,3}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.generateBST(vallist)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGenerateBST_TC2(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        vallist = [1,3,2]
+        expRslt = "{1,#,3,2}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.generateBST(vallist)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGenerateBST_TC3(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        vallist = [2,1,3]
+        expRslt = "{2,1,3}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.generateBST(vallist)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGenerateBST_TC4(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        vallist = [2,3,1]
+        expRslt = "{2,1,3}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.generateBST(vallist)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGenerateBST_TC5(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        vallist = [3,1,2]
+        expRslt = "{3,1,#,#,2}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.generateBST(vallist)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGenerateBST_TC6(self):
+        # arrange
+        bstree = "{}"
+        self.bst.DeserializationOnOJ(bstree)
+
+        vallist = [3,2,1]
+        expRslt = "{3,2,#,1}"
+
+        # act
+        self.bst.rootnode = self.testedobjbst.generateBST(vallist)
+
+        # assert
+        actRslt = self.bst.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
 
 
 if __name__ == "__main__":

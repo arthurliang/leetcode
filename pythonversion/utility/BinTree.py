@@ -122,3 +122,41 @@ class BinTree:
         # TODO: is it possible to improve the whole function's performance
         result = re.sub(r",?\Z", r"", srlztnOnOJ)
         return result + '}'
+
+
+class BinSearchTree(BinTree):
+    def __init__(self):
+        pass
+
+    # @param valuelist: a list
+    # @return a root node of BST
+    def generateBST(self, valuelist):
+        root = None
+        for i in range(len(valuelist)):
+            root = self.insertValToBST(root, valuelist[i])
+        return root
+
+    # @param val: need insert
+    # @return a root node of BST
+    def insertValToBST(self, root, val):
+        if root is None:
+            root = TreeNode(val)
+        elif val < root.val:
+            root.left = self.insertValToBST(root.left, val)
+        elif val > root.val:
+            root.right = self.insertValToBST(root.right, val)
+        return root
+
+    # @param val: need searched
+    # @return a TreeNode which found
+    def searchBST(self, root, val):
+        if not root:
+            return None
+        if val < root.val:
+            return self.searchBST(root.left, val)
+        elif val > root.val:
+            return self.searchBST(root.right, val)
+        else:
+            return root
+
+
