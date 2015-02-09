@@ -47,18 +47,18 @@ class BinTree:
                 tempq.put(treenode.right)
 
         # TODO: is it possible to improve the whole function's performance
-        self.deleteNonValidRootNode(self.rootnode)
+        self.deleteNonValidTreeNode(self.rootnode)
         return True
 
-    def deleteNonValidRootNode(self, rootnode):
+    def deleteNonValidTreeNode(self, rootnode):
         if rootnode == None:
             return
         if rootnode.left and rootnode.left.val == None:
             rootnode.left = None
         if rootnode.right and rootnode.right.val == None:
             rootnode.right = None
-        self.deleteNonValidRootNode(rootnode.left)
-        self.deleteNonValidRootNode(rootnode.right)
+        self.deleteNonValidTreeNode(rootnode.left)
+        self.deleteNonValidTreeNode(rootnode.right)
 
     def SerializationOnOJ(self):
         if self.rootnode == None:
