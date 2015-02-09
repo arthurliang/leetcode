@@ -33,26 +33,44 @@ class Solution:
     # @param root, a tree node
     # @return nothing
     def connect(self, root):
-        # Brute-Force but not use constant extra space
-        if root is None:
-            return
+        tempNode = TreeNode(-1)
 
-        cq = [root]
-        nq = []
+        # root mean node in upper level
+        while root:
 
-        while cq:
-            node = cq.pop(0)
-            node.next = cq[0] if cq else None
+            pNinLowerL = tempNode
+            while root:
+                if root.left:
+                    pNinLowerL.next = root.left
+                    pNinLowerL = pNinLowerL.next
+                if root.right:
+                    pNinLowerL.next = root.right
+                    pNinLowerL = pNinLowerL.next
+                root = root.next
 
-            if node.left:
-                nq.append(node.left)
-            if node.right:
-                nq.append(node.right)
+            root = tempNode.next
+            tempNode.next = None
 
-            if not cq:
-                t = cq
-                cq = nq
-                nq = t
-                continue
+#         # Brute-Force but not use constant extra space
+#         if root is None:
+#             return
+#
+#         cq = [root]
+#         nq = []
+#
+#         while cq:
+#             node = cq.pop(0)
+#             node.next = cq[0] if cq else None
+#
+#             if node.left:
+#                 nq.append(node.left)
+#             if node.right:
+#                 nq.append(node.right)
+#
+#             if not cq:
+#                 t = cq
+#                 cq = nq
+#                 nq = t
+#                 continue
 
 
