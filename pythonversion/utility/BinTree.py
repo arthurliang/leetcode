@@ -84,6 +84,12 @@ class BinTree:
 
 
 
+    def SerializationOnOJbyPara(self, root):
+        self.rootnode = root
+        return self.SerializationOnOJ()
+
+
+
     def SerializationOnOJ4BTnextProperty(self):
         if self.rootnode == None:
             return "{}"
