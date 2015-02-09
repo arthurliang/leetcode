@@ -16,7 +16,34 @@
 #         self.left = None
 #         self.right = None
 
+from utility.BinTree import TreeNode
+
 class Solution:
     # @return a list of tree node
     def generateTrees(self, n):
-        return [None]
+        self.cache = {}
+        return self.generate(1, n)
+
+    def generate(self, min, max):
+        if (min, max) in self.cache:
+            return self.cache[(min, max)]
+
+        elif max < min:
+            self.cache[(min, max)] = [None]
+
+        elif max == min:
+            self.cache[(min, max)] = [TreeNode(max)]
+
+        else:
+            nodes = []
+            for i in range(min, max + 1):
+                for left in self.generate(min, i - 1):
+                    for right in self.generate(i + 1, max):
+                        root = TreeNode(i)
+                        root.left = left
+                        root.right = right
+                        nodes.append(root)
+
+            self.cache[(min, max)] = nodes
+
+        return self.cache[(min, max)]
