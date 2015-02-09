@@ -31,6 +31,80 @@ class Test(unittest.TestCase):
         # assert
         self.assertEqual(expRslt, actRslt)
 
+
+    def testNumTrees_TC2(self):
+        # arrange
+        n = 1
+        expRslt = 1
+
+        # act
+        actRslt = self.testedobj.numTrees(n)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testNumTrees_TC3(self):
+        # arrange
+        n = 2
+        expRslt = 2
+
+        # act
+        actRslt = self.testedobj.numTrees(n)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testNumTrees_TC4(self):
+        # arrange
+        n = 3
+        expRslt = 5
+
+        # act
+        actRslt = self.testedobj.numTrees(n)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testNumTrees_TC5(self):
+        # arrange
+        n = 4
+        expRslt = 14
+
+        # act
+        actRslt = self.testedobj.numTrees(n)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+
+    def testNumTrees_TC6(self):
+        # arrange
+        n = 5
+        expRslt = 42
+
+        # act
+        actRslt = self.testedobj.numTrees(n)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testNumTrees_TC7(self):
+        # arrange
+        n = 6
+        expRslt = 132
+
+        # act
+        actRslt = self.testedobj.numTrees(n)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
