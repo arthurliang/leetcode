@@ -24,15 +24,13 @@ class Test(unittest.TestCase):
     def testGenerateTrees_TC1(self):
         # arrange
         n = 0
-        expListRslt = [None]
-
-        bt = BinTree()
-        expRslt = [bt.SerializationOnOJbyPara(x) for x in expListRslt]
+        expRslt = ['{}']
 
         # act
         actLsitRslt = self.testedobj.generateTrees(n)
 
         # assert
+        bt = BinTree()
         actRslt = [bt.SerializationOnOJbyPara(x) for x in actLsitRslt]
         self.assertEqual(expRslt, actRslt)
 
