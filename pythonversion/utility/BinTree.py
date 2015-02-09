@@ -53,9 +53,9 @@ class BinTree:
     def deleteNonValidRootNode(self, rootnode):
         if rootnode == None:
             return
-        if rootnode.left != None and rootnode.left.val == None:
+        if rootnode.left and rootnode.left.val == None:
             rootnode.left = None
-        if rootnode.right != None and rootnode.right.val == None:
+        if rootnode.right and rootnode.right.val == None:
             rootnode.right = None
         self.deleteNonValidRootNode(rootnode.left)
         self.deleteNonValidRootNode(rootnode.right)
@@ -70,7 +70,7 @@ class BinTree:
 
         while not tempq.empty():
             treenode = tempq.get()
-            if treenode != None:
+            if treenode:
                 srlztnOnOJ += str(treenode.val)
                 tempq.put(treenode.left)
                 tempq.put(treenode.right)
@@ -89,18 +89,29 @@ class BinTree:
             return "{}"
 
         srlztnOnOJ = "{"
-        stack = [self.rootnode]
+        cq = [self.rootnode]
+        nq = []
 
-        while stack:
-            treenode = stack.pop()
+        while cq:
+            treenode = cq.pop(0)
 
-            if treenode.left is not None:
-                stack.append(treenode.left)
+            if treenode.left:
+                nq.append(treenode.left)
 
-            while treenode is not None:
+            if treenode.right:
+                nq.append(treenode.right)
+
+            while treenode:
                 srlztnOnOJ += str(treenode.val) + ','
                 treenode = treenode.next
-            srlztnOnOJ += '#' + ','
+                if cq and cq[0] is treenode:
+                    cq.pop(0)
+
+            if not cq:
+                srlztnOnOJ += '#' + ','
+                t = cq
+                cq = nq
+                nq = t
 
         # TODO: is it possible to improve the whole function's performance
         result = re.sub(r",?\Z", r"", srlztnOnOJ)

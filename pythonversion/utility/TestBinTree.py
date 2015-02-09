@@ -103,7 +103,6 @@ class Test(unittest.TestCase):
         self.assertEqual(self.testedobj.rootnode.right, None)
 
 
-
     def testBinTreeDeserializationOnOJforFullcase(self):
         # arrange
         srlztn = "{1,2,3,#,#,4,#,#,5}"
@@ -173,7 +172,6 @@ class Test(unittest.TestCase):
         self.assertEqual(expSrlztn, actSrlztn)
 
 
-
     def testSerializationOnOJ4BTnextPropertyforNullTree(self):
         # arrange
         expSrlztn = "{}"
@@ -183,7 +181,6 @@ class Test(unittest.TestCase):
 
         # assert
         self.assertEqual(expSrlztn, actSrlztn)
-
 
 
     def testSerializationOnOJ4BTnextPropertyfor1Level(self):
@@ -201,8 +198,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expSrlztn, actSrlztn)
 
 
-
-    def testSerializationOnOJ4BTnextPropertyfor2Level(self):
+    def testSerializationOnOJ4BTnextPropertyfor2Level_TC1(self):
         # arrange
         bintree = "{1,2,3}"
         rulst = self.testedobj.DeserializationOnOJ(bintree)
@@ -218,8 +214,7 @@ class Test(unittest.TestCase):
         self.assertEqual(expSrlztn, actSrlztn)
 
 
-
-    def testSerializationOnOJ4BTnextPropertyfor3Level(self):
+    def testSerializationOnOJ4BTnextPropertyfor3Level_TC1(self):
         # arrange
         bintree = "{1,2,3,4,5,6,7}"
         rulst = self.testedobj.DeserializationOnOJ(bintree)
@@ -240,6 +235,96 @@ class Test(unittest.TestCase):
         self.assertEqual(expSrlztn, actSrlztn)
 
 
+    def testSerializationOnOJ4BTnextPropertyfor2Level_TC2(self):
+        # arrange
+        bintree = "{1,2}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#,2,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testSerializationOnOJ4BTnextPropertyfor2Level_TC3(self):
+        # arrange
+        bintree = "{1,#,3}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#,3,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testSerializationOnOJ4BTnextPropertyfor3Level_TC2(self):
+        # arrange
+        bintree = "{1,2,#,3}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#,2,#,3,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testSerializationOnOJ4BTnextPropertyfor3Level_TC3(self):
+        # arrange
+        bintree = "{1,#,2,#,3}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#,2,#,3,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testSerializationOnOJ4BTnextPropertyfor3Level_TC4(self):
+        # arrange
+        bintree = "{1,2,3,4,#,#,5}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#,2,3,#,4,5,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
+    def testSerializationOnOJ4BTnextPropertyfor3Level_TC5(self):
+        # arrange
+        bintree = "{1,2,3,#,4,#,5}"
+        rulst = self.testedobj.DeserializationOnOJ(bintree)
+        self.assertEqual(rulst, True)
+
+        expSrlztn = "{1,#,2,3,#,4,5,#}"
+
+        # act
+        actSrlztn = self.testedobj.SerializationOnOJ4BTnextProperty()
+
+        # assert
+        self.assertEqual(expSrlztn, actSrlztn)
+
+
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+    # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
