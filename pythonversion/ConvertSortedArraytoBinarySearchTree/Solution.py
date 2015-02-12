@@ -14,22 +14,36 @@ class Solution:
     # @param num, a list of integers
     # @return a tree node
     def sortedArrayToBST(self, num):
+        # recursive solution
         if num is None or len(num) == 0:
             return None
 
-        root = TreeNode(0)
-        stack = [(root, 0, len(num) - 1)]
+        mid = (len(num) - 1) >> 1
+        root = TreeNode(num[mid])
 
-        while stack:
-            node, start, end = stack.pop()
-            mid = (start + end) / 2
-            node.val = num[mid]
-            if mid - 1 >= start:
-                node.left = TreeNode(0)
-                stack.append((node.left, start, mid - 1))
-            if mid + 1 <= end:
-                node.right = TreeNode(0)
-                stack.append((node.right, mid + 1, end))
+        root.left = self.sortedArrayToBST(num[0:mid])
+        root.right = self.sortedArrayToBST(num[mid+1:])
 
         return root
+
+
+#         # iteration solution
+#         if num is None or len(num) == 0:
+#             return None
+#
+#         root = TreeNode(0)
+#         stack = [(root, 0, len(num) - 1)]
+#
+#         while stack:
+#             node, start, end = stack.pop()
+#             mid = (start + end) / 2
+#             node.val = num[mid]
+#             if mid - 1 >= start:
+#                 node.left = TreeNode(0)
+#                 stack.append((node.left, start, mid - 1))
+#             if mid + 1 <= end:
+#                 node.right = TreeNode(0)
+#                 stack.append((node.right, mid + 1, end))
+#
+#         return root
 
