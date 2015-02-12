@@ -36,6 +36,40 @@ class Test(unittest.TestCase):
         self.assertEqual(expRst, actRslt)
 
 
+    def testBSTIterator_TC2(self):
+        # arrange
+        testdataTrue = "{1}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        expRst = [1]
+
+        # act
+        i, actRslt = BSTIterator(bt.rootnode), []
+        while i.hasNext():
+            actRslt.append(i.next())
+
+        # assert
+        self.assertEqual(expRst, actRslt)
+
+
+    def testBSTIterator_TC3(self):
+        # arrange
+        testdataTrue = "{2,1,3}"
+        bt = BinTree.BinTree()
+        bt.DeserializationOnOJ(testdataTrue)
+
+        expRst = [1,2,3]
+
+        # act
+        i, actRslt = BSTIterator(bt.rootnode), []
+        while i.hasNext():
+            actRslt.append(i.next())
+
+        # assert
+        self.assertEqual(expRst, actRslt)
+
+
 
 
 if __name__ == "__main__":
