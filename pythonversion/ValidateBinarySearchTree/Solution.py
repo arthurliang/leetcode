@@ -17,34 +17,29 @@ class Solution:
     # @param root, a tree node
     # @return a boolean
     def isValidBST(self, root):
-        if root is None:
-            return True
-
         return self.isValidBSTExt(root)[0]
 
-    # @param root: a tree node which must not be None
+    # @param root: a tree node0
     # @ return a tuple which include 3 elements: boolean, min value in tree, max value in tree
     def isValidBSTExt(self, root):
-        assert(root is not None)
-
-        isValid = 0
-        minVal = 1
-        maxVal = 2
+        if root is None:
+            return (True, None, None)
 
         if root.left is None and root.right is None:
             return (True, root.val, root.val)
 
-        if root.right is None:
-            rslt = self.isValidBSTExt(root.left)
-            if not rslt[isValid]:
-                return rslt
-            if rslt[maxVal] > root.val:
-                return (False, None, None)
-            return (True, rslt[minVal], root.val)
+        rsltleft = self.isValidBSTExt(root.left)
+        if not rsltleft[0]:
+            return rsltleft
+        rsltright = self.isValidBSTExt(root.right)
+        if not rsltright[0]:
+            return rsltright
 
-        if root.left is None:
-            rslt = self.isValidBSTExt(root.right)
-            if root.val > rslt[minVal]:
-                return (False, None, None)
+        if rsltleft[2] < root.val and (root.right is None or root.val < rsltright[1]):
+            curMinVal = root.val if root.left is None else rsltleft[1]
+            curMaxVal = root.val if root.right is None else rsltright[2]
+            return (True, curMinVal, curMaxVal)
+        else:
+            return (False, None, None)
 
 
