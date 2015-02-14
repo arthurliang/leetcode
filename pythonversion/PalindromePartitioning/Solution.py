@@ -14,4 +14,33 @@ class Solution:
     # @param s, a string
     # @return a list of lists of string
     def partition(self, s):
-        return [[s]]
+        # straight forward
+        self.s = s
+        return self.partitionExt(0, len(s) - 1)
+
+    def partitionExt(self, start, end):
+        if start > end:
+            return [[]]
+
+        if start == end:
+            return [[self.s[start]]]
+
+        rslt = []
+        mid = end
+        while mid >= start:
+            if self.isPalindrome(start, mid):
+                cur = [self.s[start:mid + 1]]
+                rest = self.partitionExt(mid + 1, end)
+                for i in range(len(rest)):
+                    rslt.append(cur + rest[i])
+            mid -= 1
+
+        return rslt
+
+    def isPalindrome(self, start, end):
+        while start < end:
+            if self.s[start] != self.s[end]:
+                return False
+            start += 1
+            end -= 1
+        return True
