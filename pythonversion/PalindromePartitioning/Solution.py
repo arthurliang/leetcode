@@ -14,8 +14,9 @@ class Solution:
     # @param s, a string
     # @return a list of lists of string
     def partition(self, s):
-        # straight forward
+        # straight forward, DP
         self.s = s
+        self.cache = {}
         return self.partitionExt(0, len(s) - 1)
 
     def partitionExt(self, start, end):
@@ -24,6 +25,9 @@ class Solution:
 
         if start == end:
             return [[self.s[start]]]
+
+        if (start, end) in self.cache:
+            return self.cache[(start, end)]
 
         rslt = []
         mid = end
@@ -35,6 +39,7 @@ class Solution:
                     rslt.append(cur + rest[i])
             mid -= 1
 
+        self.cache[(start,end)] = rslt
         return rslt
 
     def isPalindrome(self, start, end):
