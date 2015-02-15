@@ -10,7 +10,7 @@ class Solution:
     # @param A a list of integers
     # @return an integer
     def removeDuplicates(self, A):
-        if len(A) < 2:
+        if len(A) < 3:
             return len(A)
 
         i = 0
@@ -21,7 +21,7 @@ class Solution:
                 continue
 
             if count >= 2:
-                A[i+1] = A[i]
+                A[i + 1] = A[i]
                 i += 2
             else:
                 i += 1
@@ -29,7 +29,7 @@ class Solution:
             A[i] = A[j]
 
         if count >= 2:
-            A[i+1] = A[i]
+            A[i + 1] = A[i]
             i += 1
 
         return i + 1
