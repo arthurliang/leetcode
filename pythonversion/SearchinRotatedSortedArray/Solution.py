@@ -25,50 +25,23 @@ class Solution:
         if start > end - 1:
             return -1
 
-        if A[start] < A[end - 1]:
-            return self.binsearch(A, start, end, target)
+        while start < end:
+            mid = (end + start) / 2
 
-        mid = (end + start) / 2
-
-        if target < A[start]:
-            if A[mid] < target:
-                return self.binsearch(A, mid + 1, end, target)
-            elif A[mid] > target:
-                if A[mid] > A[start]:
-                    return self.searchExt(A, mid + 1, end, target)
-                else:
-                    return self.searchExt(A, start + 1, mid, target)
-            else:
+            if target == A[mid]:
                 return mid
 
-        elif target > A[start]:
-            if A[mid] > target:
-                return self.binsearch(A, start + 1, mid, target)
-
-            elif A[mid] < target:
-                if A[mid] > A[start]:
-                    return self.searchExt(A, mid + 1, end, target)
+            if A[start] < A[mid]:
+                if target >= A[start] and target < A[mid]:
+                    end = mid
                 else:
-                    return self.searchExt(A, start + 1, mid, target)
+                    start = mid + 1
             else:
-                return mid
-        else:
-            return start
+                if target > A[mid] and target <= A[end - 1]:
+                    start = mid + 1
+                else:
+                    end = mid
+
+        return -1
 
 
-    # @param A, a list of integers
-    # @param start: start index
-    # @param end: end index, exclusive
-    # @param target, an integer to be searched
-    # @return an integer
-    def binsearch(self, A, start, end, target):
-        if end - 1 < start:
-            return -1
-
-        mid = (end + start) / 2
-        if A[mid] > target:
-            return self.binsearch(A, start, mid, target)
-        elif A[mid] < target:
-            return self.binsearch(A, mid + 1, end, target)
-        else:
-            return mid
