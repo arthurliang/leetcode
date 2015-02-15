@@ -16,16 +16,35 @@
 #
 # Could you come up with an one-pass algorithm using only constant space?
 
-import collections
+# import collections
 
 class Solution:
     # @param A a list of integers
     # @return nothing, sort in place
     def sortColors(self, A):
-        # straight forward solution
+        # one-pass solution
         if not A:
             return
-        c = collections.Counter(A)
-        A[0 : c[0]] = [0] * c[0]
-        A[c[0] : c[0] + c[1]] = [1] * c[1]
-        A[c[0] + c[1] : c[0] + c[1] + c[2]] = [2] * c[2]
+
+        left_index = zero_pos = 0
+        right_index = len(A) - 1
+
+        while left_index <= right_index:
+            if A[left_index] == 0:
+                A[left_index], A[zero_pos] = A[zero_pos], A[left_index]
+                left_index += 1
+                zero_pos += 1
+            elif A[left_index] == 2:
+                A[right_index], A[left_index] = A[left_index], A[right_index]
+                right_index -= 1
+            else:
+                left_index += 1
+
+
+#         # straight forward solution
+#         if not A:
+#             return
+#         c = collections.Counter(A)
+#         A[0 : c[0]] = [0] * c[0]
+#         A[c[0] : c[0] + c[1]] = [1] * c[1]
+#         A[c[0] + c[1] : c[0] + c[1] + c[2]] = [2] * c[2]
