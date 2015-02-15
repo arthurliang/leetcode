@@ -11,8 +11,30 @@
 #         self.val = x
 #         self.next = None
 
+from utility.CustomList import ListNode
+
 class Solution:
     # @param head, a ListNode
     # @return a ListNode
     def deleteDuplicates(self, head):
-        return head
+        sentinel = pre = ListNode(-1)
+        sentinel.next = head
+        p1, p2 = head, head
+        count = 0
+
+        while p2 is not None:
+            if p1.val == p2.val:
+                count += 1
+                p2 = p2.next
+                continue
+            if count > 1:
+                pre.next = p2
+                p1 = p2
+            else:
+                pre = p1
+                p1 = p2
+            count = 0
+
+        if count > 1:
+            pre.next = p2
+        return sentinel.next
