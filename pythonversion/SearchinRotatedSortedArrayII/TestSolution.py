@@ -32,6 +32,239 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testSearch_TC2(self):
+        # arrange
+        A = None
+        target = 0
+        expRslt = False
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC3(self):
+        # arrange
+        A = [1,1]
+        target = 1
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC4(self):
+        # arrange
+        A = [1,0]
+        target = 0
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC5(self):
+        # arrange
+        A = [1,-1,0]
+        target = 0
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC6(self):
+        # arrange
+        A = [1,2,0]
+        target = 0
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC7(self):
+        # arrange
+        A = [1,2,0]
+        target = -2
+        expRslt = False
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC8(self):
+        # arrange
+        A = [1,3,0]
+        target = 2
+        expRslt = False
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC9(self):
+        # arrange
+        A = [1,2,0]
+        target = 2
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC10(self):
+        # arrange
+        A = [0,1,-1]
+        target = 2
+        expRslt = False
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC11(self):
+        # arrange
+        A = [0,1,-3,-2,-1]
+        target = 1
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC12(self):
+        # arrange
+        A = [5,1,3]
+        target = 2
+        expRslt = False
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC13(self):
+        # arrange
+        A = [1,3,5]
+        target = 5
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC14(self):
+        # arrange
+        A = [4,5,6,7,0,1,2]
+        target = 0
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC15(self):
+        # arrange
+        A = [7,8,1,2,3,4,5,6]
+        target = 2
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC16(self):
+        # arrange
+        A = [7,8,9,10,11,12,5,6]
+        target = 12
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC17(self):
+        # arrange
+        A = [7,8,9,9,10,11,11,12,5,6]
+        target = 12
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC18(self):
+        # arrange
+        A = [1,1,1,3,1]
+        target = 3
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testSearch_TC19(self):
+        # arrange
+        A = [1,3,1,1]
+        target = 3
+        expRslt = True
+
+        # act
+        actRslt = self.testedobj.search(A, target)
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
