@@ -29,28 +29,48 @@ class Graph:
 
         datalist = srlztnOnOJ[1:-1].split('#')
 
-        self.nodelist = []
         for item in datalist:
             itemdata = item.split(',')
-            gn = UndirectedGraphNode(itemdata[0])
-            for neighbor in itemdata[1:]:
-                gn.neighbors.append(neighbor)
-            self.nodelist.append(gn)
+            gn = self.getNodeByLable(itemdata[0])
+            if gn is None:
+                gn = UndirectedGraphNode(itemdata[0])
+                self.nodelist.append(gn)
+
+            for neighborLable in itemdata[1:]:
+                nbnode = self.getNodeByLable(neighborLable)
+                if nbnode is None:
+                    nbnode = UndirectedGraphNode(neighborLable)
+                    self.nodelist.append(nbnode)
+                gn.neighbors.append(nbnode)
 
         return True
 
+    def getNodeByLable(self, label):
+        for node in self.nodelist:
+            if node.label == label:
+                return node
+        return None
+
     def SerializationOnOJ(self):
-        if self.nodelist == None:
+        if len(self.nodelist) == 0:
             return "{}"
 
         srlztnOnOJ = "{"
-        for gn in self.nodelist:
+
+        queue = [self.nodelist[0]]
+        while queue:
+            gn = queue.pop(0)
             if gn is None:
-                # maybe we can raise an exception
+                raise UserWarning("A Graph's nodelist include a NONE node! None is not allowed")
                 continue
+
+            if re.search(r"^{{{:}|#{:}".format(gn.label, gn.label), srlztnOnOJ):
+                continue
+
             srlztnOnOJ += str(gn.label)
             for neighbor in gn.neighbors:
-                srlztnOnOJ += ',' + str(neighbor)
+                queue.append(neighbor)
+                srlztnOnOJ += ',' + str(neighbor.label)
             srlztnOnOJ += '#'
 
         result = re.sub(r"#*\Z", r"", srlztnOnOJ)

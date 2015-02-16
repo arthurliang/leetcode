@@ -22,6 +22,50 @@ class Test(unittest.TestCase):
         self.assertEqual(self.testedobj.nodelist, [])
 
 
+    def testGraphSerializationOnOJ_TC1(self):
+        # arrange
+        self.testedobj.nodelist.append(None)
+
+        # act
+        with self.assertRaisesRegexp(UserWarning, "A Graph's nodelist include a NONE node! None is not allowed"):
+            self.testedobj.SerializationOnOJ()
+
+        # assert
+
+
+    def testGraphSerializationOnOJ_TC2(self):
+        # arrange
+        gn = Graph.UndirectedGraphNode(0)
+        self.testedobj.nodelist.append(gn)
+        expRslt = "{0}"
+
+        # act
+        actRslt = self.testedobj.SerializationOnOJ()
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testGraphSerializationOnOJ_TC3(self):
+        # arrange
+        gn0 = Graph.UndirectedGraphNode(0)
+        gn1 = Graph.UndirectedGraphNode(1)
+        gn2 = Graph.UndirectedGraphNode(2)
+        gn0.neighbors.append(gn1)
+        gn0.neighbors.append(gn2)
+        gn1.neighbors.append(gn2)
+        gn2.neighbors.append(gn2)
+
+        self.testedobj.nodelist.append(gn0)
+        expRslt = "{0,1,2#1,2#2,2}"
+
+        # act
+        actRslt = self.testedobj.SerializationOnOJ()
+
+        # assert
+        self.assertEqual(expRslt, actRslt)
+
+
     def testGraphDeserializationOnOJforParameterVerifyWithWrongPrefix(self):
         # arrange
         srlztn = "#"
@@ -154,31 +198,6 @@ class Test(unittest.TestCase):
         self.assertEqual(Rslt, True)
         self.assertEqual(srlztn, actRslt)
         self.assertEqual(expNodeNum, actNodeNum)
-
-
-    def testGraphSerializationOnOJ_TC1(self):
-        # arrange
-        self.testedobj.nodelist.append(None)
-        expRslt = "{}"
-
-        # act
-        actRslt = self.testedobj.SerializationOnOJ()
-
-        # assert
-        self.assertEqual(expRslt, actRslt)
-
-
-    def testGraphSerializationOnOJ_TC2(self):
-        # arrange
-        gn = Graph.UndirectedGraphNode(0)
-        self.testedobj.nodelist.append(gn)
-        expRslt = "{0}"
-
-        # act
-        actRslt = self.testedobj.SerializationOnOJ()
-
-        # assert
-        self.assertEqual(expRslt, actRslt)
 
 
 if __name__ == "__main__":
