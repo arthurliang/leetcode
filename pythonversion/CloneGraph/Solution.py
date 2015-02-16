@@ -27,8 +27,34 @@
 #         self.label = x
 #         self.neighbors = []
 
+from utility.Graph import UndirectedGraphNode
+
 class Solution:
     # @param node, a undirected graph node
     # @return a undirected graph node
     def cloneGraph(self, node):
-        return None
+        self.dict = {}
+        return self.createNode(node)
+
+    def createNode(self, node):
+        # DFS
+        if node is None:
+            return None
+
+        newNode = UndirectedGraphNode(node.label)
+        self.dict[node.label] = newNode
+
+        for neighbor in node.neighbors:
+            if neighbor.label not in self.dict:
+                self.createNode(neighbor)
+            newNode.neighbors.append(self.dict[neighbor.label])
+
+        return newNode
+
+
+
+
+
+
+
+
