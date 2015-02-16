@@ -13,6 +13,7 @@ class Test(unittest.TestCase):
     def setUp(self):
         self.testedobj = Solution.Solution()
         self.sll = SinglyLinkedList()
+        self.slltemp = SinglyLinkedList()
         pass
 
 
@@ -25,6 +26,114 @@ class Test(unittest.TestCase):
         # arrange
         lists = []
         expRslt = "{}"
+
+        # act
+        self.sll.listhead = self.testedobj.mergeKLists(lists)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeKLists_TC2(self):
+        # arrange
+        lists = None
+        expRslt = "{}"
+
+        # act
+        self.sll.listhead = self.testedobj.mergeKLists(lists)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeKLists_TC3(self):
+        # arrange
+        lists = []
+
+        testdatas = ["{1}"]
+        for item in testdatas:
+            self.slltemp.DeserializationOnOJ(item)
+            lists.append(self.slltemp.listhead)
+
+        expRslt = "{1}"
+
+        # act
+        self.sll.listhead = self.testedobj.mergeKLists(lists)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeKLists_TC4(self):
+        # arrange
+        lists = []
+
+        testdatas = ["{1}", "{2}"]
+        for item in testdatas:
+            self.slltemp.DeserializationOnOJ(item)
+            lists.append(self.slltemp.listhead)
+
+        expRslt = "{1,2}"
+
+        # act
+        self.sll.listhead = self.testedobj.mergeKLists(lists)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeKLists_TC5(self):
+        # arrange
+        lists = []
+
+        testdatas = ["{1}", "{2}", "{3}"]
+        for item in testdatas:
+            self.slltemp.DeserializationOnOJ(item)
+            lists.append(self.slltemp.listhead)
+
+        expRslt = "{1,2,3}"
+
+        # act
+        self.sll.listhead = self.testedobj.mergeKLists(lists)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeKLists_TC6(self):
+        # arrange
+        lists = []
+
+        testdatas = ["{1,4}", "{2}"]
+        for item in testdatas:
+            self.slltemp.DeserializationOnOJ(item)
+            lists.append(self.slltemp.listhead)
+
+        expRslt = "{1,2,4}"
+
+        # act
+        self.sll.listhead = self.testedobj.mergeKLists(lists)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testMergeKLists_TC7(self):
+        # arrange
+        lists = []
+
+        testdatas = ["{1,4}", "{2,6}", "{3}", "{5}"]
+        for item in testdatas:
+            self.slltemp.DeserializationOnOJ(item)
+            lists.append(self.slltemp.listhead)
+
+        expRslt = "{1,2,3,4,5,6}"
 
         # act
         self.sll.listhead = self.testedobj.mergeKLists(lists)
