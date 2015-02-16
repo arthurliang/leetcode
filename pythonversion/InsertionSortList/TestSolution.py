@@ -35,6 +35,76 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testInsertionSortList_TC2(self):
+        # arrange
+        testdata = "{1}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertionSortList_TC3(self):
+        # arrange
+        testdata = "{2,1}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1,2}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertionSortList_TC4(self):
+        # arrange
+        testdata = "{3,2,1}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1,2,3}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertionSortList_TC5(self):
+        # arrange
+        testdata = "{1,1}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1,1}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertionSortList_TC6(self):
+        # arrange
+        testdata = "{3,2,4}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{2,3,4}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
 
 
 if __name__ == "__main__":
