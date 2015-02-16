@@ -84,6 +84,23 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testCloneGraph_TC5(self):
+        # arrange
+        expRslt = "{0,0,0}"
+        self.dataGraph.DeserializationOnOJ(expRslt)
+
+        # act
+        actNode = self.testedobj.cloneGraph(self.dataGraph.nodelist[0])
+
+        # assert
+        self.rsltGraph.nodelist.append(actNode)
+        actRslt = self.rsltGraph.SerializationOnOJ()
+
+        for actgn in self.rsltGraph.nodelist:
+            self.assertNotIn(actgn, self.dataGraph.nodelist)
+        self.assertEqual(expRslt, actRslt)
+
+
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

@@ -34,10 +34,35 @@ class Solution:
     # @return a undirected graph node
     def cloneGraph(self, node):
         self.dict = {}
-        return self.createNode(node)
+        return self.createNodeBFS(node)
 
-    def createNode(self, node):
-        # DFS
+    def createNodeBFS(self, node):
+        if node is None:
+            return None
+
+        newNode = UndirectedGraphNode(node.label)
+        self.dict[node.label] = newNode
+
+        queue = [node]
+        visited = []
+
+        while queue:
+            n = queue.pop(0)
+            if n.label in visited:
+                continue
+
+            for neighbor in n.neighbors:
+                if neighbor.label not in self.dict:
+                    nb = UndirectedGraphNode(neighbor.label)
+                    self.dict[nb.label] = nb
+                self.dict[n.label].neighbors.append(self.dict[neighbor.label])
+                queue.append(neighbor)
+
+            visited.append(n.label)
+
+        return newNode
+
+    def createNodeDFS(self, node):
         if node is None:
             return None
 
