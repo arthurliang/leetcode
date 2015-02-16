@@ -18,12 +18,26 @@ class Solution:
         sentinel = ListNode(-1)
         sentinel.next = head
 
+        pre = head
         target = head.next
-        head.next = None
         while target:
+            while pre and target and pre.val < target.val:
+                pre = target
+                target = target.next
+            if target is None:
+                break
+
             temp = target.next
+            pre.next = None
             target.next = None
-            self.insertToSortedList(target, sentinel)
+
+            if target.val < sentinel.next.val:
+                target.next = sentinel.next
+                sentinel.next = target
+            else:
+                self.insertToSortedList(target, sentinel)
+
+            pre.next = temp
             target = temp
 
         return sentinel.next
@@ -38,5 +52,3 @@ class Solution:
                 return
             pre = head
             head = head.next
-
-        pre.next = target

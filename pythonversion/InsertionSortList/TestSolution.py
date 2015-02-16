@@ -105,6 +105,48 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
 
 
+    def testInsertionSortList_TC7(self):
+        # arrange
+        testdata = "{1,2,3}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1,2,3}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertionSortList_TC8(self):
+        # arrange
+        testdata = "{1,2,3,4,5}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1,2,3,4,5}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
+    def testInsertionSortList_TC9(self):
+        # arrange
+        testdata = "{5,4,3,2,1}"
+        self.sll.DeserializationOnOJ(testdata)
+        expRslt = "{1,2,3,4,5}"
+
+        # act
+        self.sll.listhead = self.testedobj.insertionSortList(self.sll.listhead)
+
+        # assert
+        actRslt = self.sll.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+
+
 
 
 if __name__ == "__main__":
