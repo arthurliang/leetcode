@@ -16,35 +16,29 @@ class Solution:
         if denominator == 0:
             return "error"
 
-        rslt = '' if numerator * denominator >= 0 else '-'
+        rslt = ['' if numerator * denominator >= 0 else '-']
 
-        numerator = abs(numerator)
-        denominator = abs(denominator)
+        numerator, denominator = abs(numerator), abs(denominator)
+        quotient, remainder = divmod(numerator, denominator)
 
-        rslt += str(numerator / denominator)
+        rslt.append(str(quotient))
 
-        r = numerator % denominator
-        if r == 0:
-            return rslt
+        if remainder == 0:
+            return  "".join(rslt)
+        else:
+            rslt.append('.')
 
-        rslt += '.'
         remainderCache = {}
+        while remainder not in remainderCache and remainder != 0:
+            remainderCache[remainder] = len(rslt)
+            quotient, remainder = divmod(remainder * 10, denominator)
+            rslt.append(str(quotient))
 
-        while r not in remainderCache and r != 0:
-            remainderCache[r] = len(rslt)
+        if remainder in remainderCache:
+            rslt.insert(remainderCache[remainder], '(')
+            rslt.append(')')
 
-            r *= 10
-            quotient = r / denominator
-            r = r % denominator
-
-            if r in remainderCache:
-                rslt = rslt[:remainderCache[r]] + '(' + rslt[remainderCache[r]:] + str(quotient) + ')'
-                return rslt
-
-            rslt += str(quotient)
-
-
-        return  rslt
+        return  "".join(rslt)
 
 
 #         print("{:-^30}".format("center"))
