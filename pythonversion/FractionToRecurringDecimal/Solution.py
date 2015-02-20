@@ -13,4 +13,56 @@
 class Solution:
     # @return a string
     def fractionToDecimal(self, numerator, denominator):
-        return  "0.5"
+        if denominator == 0:
+            return "error"
+
+        rslt = '' if numerator * denominator >= 0 else '-'
+
+        numerator = abs(numerator)
+        denominator = abs(denominator)
+
+        rslt += str(numerator / denominator)
+
+        r = numerator % denominator
+        if r == 0:
+            return rslt
+
+        rslt += '.'
+        remainderCache = {}
+
+        while r not in remainderCache and r != 0:
+            remainderCache[r] = len(rslt)
+
+            r *= 10
+            quotient = r / denominator
+            r = r % denominator
+
+            if r in remainderCache:
+                rslt = rslt[:remainderCache[r]] + '(' + rslt[remainderCache[r]:] + str(quotient) + ')'
+                return rslt
+
+            rslt += str(quotient)
+
+
+        return  rslt
+
+
+#         print("{:-^30}".format("center"))
+#         n, remainder = divmod(abs(numerator), abs(denominator))
+#         sign = '-' if numerator*denominator < 0 else ''
+#         result = [sign+str(n), '.']
+#         stack = []
+#         print stack
+#         while remainder not in stack:
+#             stack.append(remainder)
+#             print stack
+#             n, remainder = divmod(remainder*10, abs(denominator))
+#             print n, remainder
+#             result.append(str(n))
+#
+#         print result
+#         idx = stack.index(remainder)
+#         result.insert(idx+2, '(')
+#         result.append(')')
+#         print result
+#         return ''.join(result).replace('(0)', '').rstrip('.')
