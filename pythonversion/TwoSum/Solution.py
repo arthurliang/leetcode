@@ -10,4 +10,17 @@
 class Solution:
     # @return a tuple, (index1, index2)
     def twoSum(self, num, target):
-        return (1, 2)
+        # straight forward solution
+        index1 = 0
+        index2 = 0
+        len_n = len(num)
+
+        while index1 < len_n:
+            index2 = index1 + 1
+            temp = target - num[index1]
+            while index2 < len_n:
+                if num[index2] == temp:
+                    return (index1 + 1, index2 + 1)
+                index2 += 1
+            index1 += 1
+
