@@ -32,9 +32,17 @@ class Solution:
             l1 = l1.next
             l2 = l2.next
 
-        if carry:
+        while carry:
             cur.next = ListNode(-1)
             cur = cur.next
-            cur.val = carry
+            if l1:
+                carry, cur.val= divmod((l1.val + carry), 10)
+                l1 = l1.next
+            elif l2:
+                carry, cur.val= divmod((l2.val + carry), 10)
+                l2 = l2.next
+            else:
+                cur.val = carry
+                carry = 0
 
         return sentinel.next
