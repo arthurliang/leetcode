@@ -15,9 +15,13 @@ from utility.CustomList import ListNode
 class Solution:
     # @return a ListNode
     def addTwoNumbers(self, l1, l2):
-        if l1 is None or l2 is None:
-            return None
+        if l1 is None:
+            return l2
+
+        if l2 is None:
+            return l1
 
         rslt = ListNode(-1)
         rslt.val = l1.val + l2.val
+
         return rslt
