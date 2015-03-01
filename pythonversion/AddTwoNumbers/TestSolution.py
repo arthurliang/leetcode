@@ -271,10 +271,10 @@ class Test(unittest.TestCase):
         self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
 
 
-    def testAddTwoNumbers_TC10(self):
+    def testAddTwoNumbers_TC11(self):
         #arrange
-        headAoj = "{5}"
-        headBoj = "{5,9}"
+        headAoj = "{1}"
+        headBoj = "{5,9,8}"
 
         self.sllA.DeserializationOnOJ(headAoj)
         self.sllB.DeserializationOnOJ(headBoj)
@@ -283,7 +283,32 @@ class Test(unittest.TestCase):
 
         l1 = self.sllA.listhead
         l2 = self.sllB.listhead
-        expRslt = "{0,0,1}"
+        expRslt = "{6,9,8}"
+
+        #act
+        acthead = self.testedobj.addTwoNumbers(l1, l2)
+
+        #assert
+        self.sllC.listhead = acthead
+        actRslt = self.sllC.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+        self.assertEqual(headAoj, self.sllA.SerializationOnOJ())
+        self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
+
+
+    def testAddTwoNumbers_TC12(self):
+        #arrange
+        headAoj = "{1,3,5}"
+        headBoj = "{5}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+        self.assertEqual(headAoj, self.sllA.SerializationOnOJ())
+        self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{6,3,5}"
 
         #act
         acthead = self.testedobj.addTwoNumbers(l1, l2)

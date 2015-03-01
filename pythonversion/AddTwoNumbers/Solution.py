@@ -45,4 +45,16 @@ class Solution:
                 cur.val = carry
                 carry = 0
 
+        while l1:
+            cur.next = ListNode(-1)
+            cur = cur.next
+            cur.val= l1.val
+            l1 = l1.next
+
+        while l2:
+            cur.next = ListNode(-1)
+            cur = cur.next
+            cur.val= l2.val
+            l2 = l2.next
+
         return sentinel.next
