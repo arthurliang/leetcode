@@ -14,6 +14,7 @@ class Test(unittest.TestCase):
         self.testedobj = Solution.Solution()
         self.sllA = SinglyLinkedList()
         self.sllB = SinglyLinkedList()
+        self.sllC = SinglyLinkedList()
         pass
 
 
@@ -43,6 +44,77 @@ class Test(unittest.TestCase):
         self.assertEqual(expRslt, actRslt)
         self.assertEqual(self.sllA.listhead, None)
         self.assertEqual(self.sllB.listhead, None)
+
+
+    def testAddTwoNumbers_TC2(self):
+        #arrange
+        headAoj = "{}"
+        headBoj = "{1}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+        self.assertEqual(self.sllA.listhead, None)
+        self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = None
+
+        #act
+        actRslt = self.testedobj.addTwoNumbers(l1, l2)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+        self.assertEqual(self.sllA.listhead, None)
+        self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
+
+
+    def testAddTwoNumbers_TC3(self):
+        #arrange
+        headAoj = "{1}"
+        headBoj = "{}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+        self.assertEqual(headAoj, self.sllA.SerializationOnOJ())
+        self.assertEqual(self.sllB.listhead, None)
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = None
+
+        #act
+        actRslt = self.testedobj.addTwoNumbers(l1, l2)
+
+        #assert
+        self.assertEqual(expRslt, actRslt)
+        self.assertEqual(headAoj, self.sllA.SerializationOnOJ())
+        self.assertEqual(self.sllB.listhead, None)
+
+
+    def testAddTwoNumbers_TC4(self):
+        #arrange
+        headAoj = "{1}"
+        headBoj = "{2}"
+
+        self.sllA.DeserializationOnOJ(headAoj)
+        self.sllB.DeserializationOnOJ(headBoj)
+        self.assertEqual(headAoj, self.sllA.SerializationOnOJ())
+        self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
+
+        l1 = self.sllA.listhead
+        l2 = self.sllB.listhead
+        expRslt = "{3}"
+
+        #act
+        acthead = self.testedobj.addTwoNumbers(l1, l2)
+
+        #assert
+        self.sllC.listhead = acthead
+        actRslt = self.sllC.SerializationOnOJ()
+        self.assertEqual(expRslt, actRslt)
+        self.assertEqual(headAoj, self.sllA.SerializationOnOJ())
+        self.assertEqual(headBoj, self.sllB.SerializationOnOJ())
 
 
 if __name__ == "__main__":

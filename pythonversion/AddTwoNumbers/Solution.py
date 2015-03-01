@@ -10,7 +10,14 @@
 #         self.val = x
 #         self.next = None
 
+from utility.CustomList import ListNode
+
 class Solution:
     # @return a ListNode
     def addTwoNumbers(self, l1, l2):
-        return None
+        if l1 is None or l2 is None:
+            return None
+
+        rslt = ListNode(-1)
+        rslt.val = l1.val + l2.val
+        return rslt
