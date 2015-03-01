@@ -23,12 +23,18 @@ class Solution:
 
         sentinel = ListNode(-1)
         cur = sentinel
+        carry = 0
 
         while l1 and l2:
             cur.next = ListNode(-1)
             cur = cur.next
-            cur.val = l1.val + l2.val
+            carry, cur.val= divmod((l1.val + l2.val + carry), 10)
             l1 = l1.next
             l2 = l2.next
+
+        if carry:
+            cur.next = ListNode(-1)
+            cur = cur.next
+            cur.val = carry
 
         return sentinel.next
