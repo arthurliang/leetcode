@@ -21,40 +21,19 @@ class Solution:
         if l2 is None:
             return l1
 
-        sentinel = ListNode(-1)
-        cur = sentinel
+        sentinel = cur = ListNode(-1)
         carry = 0
 
-        while l1 and l2:
-            cur.next = ListNode(-1)
-            cur = cur.next
-            carry, cur.val= divmod((l1.val + l2.val + carry), 10)
-            l1 = l1.next
-            l2 = l2.next
-
-        while carry:
-            cur.next = ListNode(-1)
-            cur = cur.next
+        while l1 or l2 or carry:
+            v1 = v2 =0
             if l1:
-                carry, cur.val= divmod((l1.val + carry), 10)
+                v1 = l1.val
                 l1 = l1.next
-            elif l2:
-                carry, cur.val= divmod((l2.val + carry), 10)
+            if l2:
+                v2 = l2.val
                 l2 = l2.next
-            else:
-                cur.val = carry
-                carry = 0
-
-        while l1:
-            cur.next = ListNode(-1)
+            carry, val= divmod((v1 + v2 + carry), 10)
+            cur.next = ListNode(val)
             cur = cur.next
-            cur.val= l1.val
-            l1 = l1.next
-
-        while l2:
-            cur.next = ListNode(-1)
-            cur = cur.next
-            cur.val= l2.val
-            l2 = l2.next
 
         return sentinel.next
