@@ -21,7 +21,14 @@ class Solution:
         if l2 is None:
             return l1
 
-        rslt = ListNode(-1)
-        rslt.val = l1.val + l2.val
+        sentinel = ListNode(-1)
+        cur = sentinel
 
-        return rslt
+        while l1 and l2:
+            cur.next = ListNode(-1)
+            cur = cur.next
+            cur.val = l1.val + l2.val
+            l1 = l1.next
+            l2 = l2.next
+
+        return sentinel.next
